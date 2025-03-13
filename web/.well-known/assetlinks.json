@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.ifyk",
+      "sha256_cert_fingerprints": [
+        "71:78:81:53:54:E2:52:48:40:DD:C5:8D:9F:F9:DA:2D:60:CD:1A:85:15:EC:42:4F:FE:0A:7A:2F:75:AF:77:4F",
+        "60:1B:D2:DB:EC:9B:ED:0D:43:9B:39:75:54:98:8C:A1:EE:AE:F3:97:8C:29:F5:12:41:61:CD:9B:22:A0:BB:12"
+      ]
+    }
+  }
+]
