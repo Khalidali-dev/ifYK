@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ifyk_landing/ui/widgets/jpg_asset.dart';
-import 'package:ifyk_landing/ui/widgets/png_asset.dart';
 
 class BlogsWidget extends StatelessWidget {
   const BlogsWidget({
@@ -28,7 +27,7 @@ class BlogsWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           SizedBox(
-            height: size.width > 500 ? size.height * 0.6 : size.height * 0.4,
+            height: size.width > 500 ? size.height * 0.6 : size.height * 0.5,
             child: ListView.separated(
               padding: EdgeInsets.all(size.width > 500 ? 30 : 20),
               separatorBuilder: (context, index) => const SizedBox(width: 20),

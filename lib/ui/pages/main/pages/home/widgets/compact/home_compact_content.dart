@@ -202,12 +202,15 @@ class _HomeCompactContentState extends State<HomeCompactContent> {
             ),
           ),
           BlogsWidget(size: size),
+          const SizedBox(
+            height: 20,
+          ),
           Card(
-            margin: const EdgeInsets.symmetric(horizontal:140),
-            color:  Colors.grey.shade700,
+            margin: const EdgeInsets.symmetric(horizontal: 140),
+            color: Colors.grey.shade700,
             shape: const StadiumBorder(),
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical:5,horizontal: 10),
+              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [1, 2, 3, 4, 5]

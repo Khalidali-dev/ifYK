@@ -5,11 +5,13 @@ import 'package:ifyk_landing/ui/utils/size_util.dart';
 import 'package:ifyk_landing/ui/widgets/bounce_button.dart';
 import 'package:ifyk_landing/ui/widgets/custom_text.dart';
 import 'package:ifyk_landing/ui/widgets/png_asset.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class WideAppBar extends StatelessWidget {
   final TabsRouter tabsRouter;
   final List<GlobalKey<AutoRouterState>> routerKeys;
-  const WideAppBar({super.key, required this.tabsRouter, required this.routerKeys});
+  const WideAppBar(
+      {super.key, required this.tabsRouter, required this.routerKeys});
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +19,12 @@ class WideAppBar extends StatelessWidget {
     return Container(
       constraints: const BoxConstraints(maxWidth: 1000),
       margin: const EdgeInsets.only(top: 15, bottom: 15),
-      padding: EdgeInsets.symmetric(horizontal: screenWidth/20),
+      padding: EdgeInsets.symmetric(horizontal: screenWidth / 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           SizedBox(
-            height: screenWidth/50,
+            height: screenWidth / 50,
             child: const Align(
               alignment: Alignment.centerLeft,
               child: PngAsset(
@@ -36,14 +38,14 @@ class WideAppBar extends StatelessWidget {
             decoration: BoxDecoration(
                 color: Colors.grey.withOpacity(.1),
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: ColorPalette.appbarBorderColor, width: 1.5)
-            ),
+                border: Border.all(
+                    color: ColorPalette.appbarBorderColor, width: 1.5)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 BounceButton(
-                  onTap: (){
-                    if(tabsRouter.activeIndex == 0){
+                  onTap: () {
+                    if (tabsRouter.activeIndex == 0) {
                       routerKeys[0].currentState?.controller?.popUntilRoot();
                     } else {
                       tabsRouter.setActiveIndex(0);
@@ -52,32 +54,43 @@ class WideAppBar extends StatelessWidget {
                   child: CustomText(
                     label: 'Home',
                     fontSize: 14,
-                    textColor: ColorPalette.white.withOpacity(tabsRouter.activeIndex == 0 ? 1 :.6),
+                    textColor: ColorPalette.white
+                        .withOpacity(tabsRouter.activeIndex == 0 ? 1 : .6),
                   ),
                 ),
-                SizedBox(width: screenWidth/30),
+                SizedBox(width: screenWidth / 30),
                 BounceButton(
-                  onTap: ()=> tabsRouter.setActiveIndex(1),
+                  onTap: () => tabsRouter.setActiveIndex(1),
                   child: CustomText(
                     label: 'About Us',
                     fontSize: 14,
-                    textColor: ColorPalette.white.withOpacity(tabsRouter.activeIndex == 1 ? 1 :.6),
+                    textColor: ColorPalette.white
+                        .withOpacity(tabsRouter.activeIndex == 1 ? 1 : .6),
                   ),
                 ),
                 // SizedBox(width: screenWidth/30),
                 // CustomText(label: 'Blog', fontSize: 14, textColor: ColorPalette.white.withOpacity(.6)),
-                SizedBox(width: screenWidth/30),
+                SizedBox(width: screenWidth / 30),
                 BounceButton(
-                  onTap: ()=> tabsRouter.setActiveIndex(2),
-                  child: CustomText(label: 'Contact', fontSize: 14, textColor: ColorPalette.white.withOpacity(tabsRouter.activeIndex == 2 ? 1 :.6))),
-                SizedBox(width: screenWidth/30),
+                    onTap: () => tabsRouter.setActiveIndex(2),
+                    child: CustomText(
+                        label: 'Contact',
+                        fontSize: 14,
+                        textColor: ColorPalette.white.withValues(
+                            alpha: tabsRouter.activeIndex == 2 ? 1 : .6))),
+                SizedBox(width: screenWidth / 30),
                 ElevatedButton(
-                  onPressed: (){},
+                  onPressed: () {
+                    launchUrl(Uri.parse(
+                        'https://apps.apple.com/us/app/ifyk/id6468367267'));
+                  },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
-                      foregroundColor: Colors.black
+                      foregroundColor: Colors.black),
+                  child: const Text(
+                    'Get The App',
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  child: const Text('Get The App', style: TextStyle(fontWeight: FontWeight.bold),),
                 )
               ],
             ),
