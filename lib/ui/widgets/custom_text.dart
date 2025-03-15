@@ -33,14 +33,14 @@ class CustomText extends StatelessWidget {
       textAlign: align ?? TextAlign.left,
       overflow: overflow ?? TextOverflow.ellipsis,
       maxLines: maxLines ?? 1,
-      style: GoogleFonts.poppins(
-        color: textColor ?? ColorPalette.white,
-        fontSize: fontSize ?? 12,
-        decoration: underlined ? TextDecoration.underline : null,
-        decorationColor: textColor ?? ColorPalette.white,
-        fontWeight: fontWeight,
-        fontStyle: fontStyle,
-      ),
+      // style: GoogleFonts.poppins(
+      //   color: textColor ?? ColorPalette.white,
+      //   fontSize: fontSize ?? 12,
+      //   decoration: underlined ? TextDecoration.underline : null,
+      //   decorationColor: textColor ?? ColorPalette.white,
+      //   fontWeight: fontWeight,
+      //   fontStyle: fontStyle,
+      // ),
     );
   }
 }

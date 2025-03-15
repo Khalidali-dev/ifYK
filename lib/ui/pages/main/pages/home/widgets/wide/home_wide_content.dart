@@ -10,9 +10,6 @@ import 'package:ifyk_landing/ui/pages/main/widgets/wide_wrapper.dart';
 import 'package:ifyk_landing/ui/utils/size_util.dart';
 import 'package:ifyk_landing/ui/widgets/png_asset.dart';
 
-import 'widgets/blogs_widget.dart';
-import 'widgets/news_letter_widget.dart';
-
 class HomeWideContent extends StatefulWidget {
   final TabsRouter tabsRouter;
   const HomeWideContent({super.key, required this.tabsRouter});
@@ -382,8 +379,7 @@ class _HomeWideContentState extends State<HomeWideContent> {
                 ],
               ),
             ),
-            BlogsWidget(size: size),
-            const NewsLetterWidget(),
+
             const WideFeedbacksSection(),
             const WideWrapper(
               maxWidth: 1200,

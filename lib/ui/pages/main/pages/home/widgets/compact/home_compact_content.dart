@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ifyk_landing/constants/color_palette.dart';
-import 'package:ifyk_landing/ui/pages/main/pages/home/widgets/wide/widgets/news_letter_widget.dart';
 import 'package:ifyk_landing/ui/widgets/png_asset.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../wide/widgets/blogs_widget.dart';
+import '../wide/widgets/blogs_page.dart';
 import 'widgets/compact_feedbacks_section.dart';
 import 'widgets/compact_footer.dart';
 
@@ -225,8 +224,6 @@ class _HomeCompactContentState extends State<HomeCompactContent> {
               ),
             ),
           ),
-
-          const NewsLetterWidget(),
 
           const CompactFeedbacksSection(),
           const CompactFooter(),

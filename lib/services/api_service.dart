@@ -42,26 +42,31 @@ class ApiService {
       rethrow;
     }
   }
+Future<Response?> subscribe(String email) async {
+  try {
+    Dio dio = Dio();
 
-  Future<Response?> subscribe(String email) async {
-    try {
-      Dio dio = Dio();
+    String url =
+        'https://outlook.us7.list-manage.com/subscribe/post?u=788dcd1b8206c48608cb9d999&id=2ffcde95d2&f_id=009e8be0f0';
 
-      FormData formData = FormData.fromMap({
-        'u': '788dcd1b8206c48608cb9d999',
-        'id': '2ffcde95d2',
-        'f_id': '009e8be0f0',
+    var response = await dio.post(
+      url,
+      options: Options(
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      ),
+      data: {
         'EMAIL': email,
-      });
+      },
+    );
 
-      var response = await dio.post(
-        'https://outlook.us7.list-manage.com/subscribe/post',
-        data: formData,
-      );
-      return response;
-    } on DioException catch (e) {
-      print('Subscription Error: ${e.response?.data ?? e.message}');
-      return null;
-    }
+    print('Subscription Success: ${response.data}');
+    return response;
+  } on DioException catch (e) {
+    print('Subscription Error: ${e.response?.data ?? e.message}');
+    return null;
   }
+}
+
 }

@@ -36,7 +36,7 @@ class WideAppBar extends StatelessWidget {
             // margin: EdgeInsets.only(right: screenWidth/20),
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
             decoration: BoxDecoration(
-                color: Colors.grey.withOpacity(.1),
+                color: Colors.grey.withValues(alpha: .1),
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(
                     color: ColorPalette.appbarBorderColor, width: 1.5)),
@@ -54,8 +54,8 @@ class WideAppBar extends StatelessWidget {
                   child: CustomText(
                     label: 'Home',
                     fontSize: 14,
-                    textColor: ColorPalette.white
-                        .withOpacity(tabsRouter.activeIndex == 0 ? 1 : .6),
+                    textColor: ColorPalette.white.withValues(
+                        alpha: tabsRouter.activeIndex == 0 ? 1 : .6),
                   ),
                 ),
                 SizedBox(width: screenWidth / 30),
@@ -64,20 +64,28 @@ class WideAppBar extends StatelessWidget {
                   child: CustomText(
                     label: 'About Us',
                     fontSize: 14,
-                    textColor: ColorPalette.white
-                        .withOpacity(tabsRouter.activeIndex == 1 ? 1 : .6),
+                    textColor: ColorPalette.white.withValues(
+                        alpha: tabsRouter.activeIndex == 1 ? 1 : .6),
                   ),
                 ),
-                // SizedBox(width: screenWidth/30),
-                // CustomText(label: 'Blog', fontSize: 14, textColor: ColorPalette.white.withOpacity(.6)),
                 SizedBox(width: screenWidth / 30),
                 BounceButton(
-                    onTap: () => tabsRouter.setActiveIndex(2),
+                  onTap: () => tabsRouter.setActiveIndex(2),
+                  child: CustomText(
+                    label: 'Blog',
+                    fontSize: 14,
+                    textColor: ColorPalette.white.withValues(
+                        alpha: tabsRouter.activeIndex == 2 ? 1 : .6),
+                  ),
+                ),
+                SizedBox(width: screenWidth / 30),
+                BounceButton(
+                    onTap: () => tabsRouter.setActiveIndex(3),
                     child: CustomText(
                         label: 'Contact',
                         fontSize: 14,
                         textColor: ColorPalette.white.withValues(
-                            alpha: tabsRouter.activeIndex == 2 ? 1 : .6))),
+                            alpha: tabsRouter.activeIndex == 3 ? 1 : .6))),
                 SizedBox(width: screenWidth / 30),
                 ElevatedButton(
                   onPressed: () {
