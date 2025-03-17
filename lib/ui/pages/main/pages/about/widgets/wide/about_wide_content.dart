@@ -11,7 +11,7 @@ class AboutWideContent extends StatelessWidget {
   final TabsRouter tabsRouter;
   const AboutWideContent({super.key, required this.tabsRouter});
 
-  Widget _buildFeature(String title, String subtitle){
+  Widget _buildFeature(String title, String subtitle) {
     return Expanded(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,12 +36,15 @@ class AboutWideContent extends StatelessWidget {
           )
         ],
       ),
-      );
+    );
   }
+
   @override
   Widget build(BuildContext context) {
     const double maxWidth = 1200;
-    final screenWidth = SizeUtil.screenWidth(context) < maxWidth ? SizeUtil.screenWidth(context) : maxWidth;
+    final screenWidth = SizeUtil.screenWidth(context) < maxWidth
+        ? SizeUtil.screenWidth(context)
+        : maxWidth;
     return SingleChildScrollView(
       child: Center(
         child: WideWrapper(
@@ -67,7 +70,7 @@ class AboutWideContent extends StatelessWidget {
                       style: GoogleFonts.unbounded(
                         fontWeight: FontWeight.w500,
                         fontSize: 35,
-                        color: ColorPalette.primary ,
+                        color: ColorPalette.primary,
                       ),
                     ),
                   ],
@@ -85,15 +88,18 @@ class AboutWideContent extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Expanded(child: PngAsset('about_1', fit: BoxFit.cover,)),
+                    const Expanded(
+                        child: PngAsset(
+                      'about_1',
+                      fit: BoxFit.cover,
+                    )),
                     const SizedBox(width: 30),
                     Expanded(
-                      child:
-                      Text(
+                      child: Text(
                         "In an era dominated by social media and digital distractions, isolation has become too easy. We believe the core issue isn't a lack of desire to be social, but a lack of information on where to go. Whether it's the overwhelming variety of options in big cities or the lack of accessible event information in smaller areas, finding things to do can be challenging.\n\nThat's why we created ifYK. Our mission is to get people out and living life by simplifying event discovery and helping people connect in the real world.",
                         style: GoogleFonts.almarai(
                           fontWeight: FontWeight.normal,
-                          fontSize: screenWidth/52,
+                          fontSize: screenWidth / 52,
                           color: ColorPalette.white,
                         ),
                       ),
@@ -119,7 +125,7 @@ class AboutWideContent extends StatelessWidget {
                             style: GoogleFonts.unbounded(
                               fontWeight: FontWeight.w500,
                               fontSize: 35,
-                              color: ColorPalette.primary ,
+                              color: ColorPalette.primary,
                             ),
                           ),
                         ],
@@ -225,7 +231,7 @@ class AboutWideContent extends StatelessWidget {
                       style: GoogleFonts.unbounded(
                         fontWeight: FontWeight.w500,
                         fontSize: 35,
-                        color: ColorPalette.primary ,
+                        color: ColorPalette.primary,
                       ),
                     ),
                   ],
@@ -234,7 +240,11 @@ class AboutWideContent extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Expanded(child: PngAsset('about_2', fit: BoxFit.cover,)),
+                    const Expanded(
+                        child: PngAsset(
+                      'about_2',
+                      fit: BoxFit.cover,
+                    )),
                     const SizedBox(width: 50),
                     Expanded(
                       child: Column(
@@ -256,7 +266,7 @@ class AboutWideContent extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 30),
-                const WideFooter(),
+                WideFooter(),
               ],
             ),
           ),

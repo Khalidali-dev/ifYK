@@ -256,7 +256,7 @@ class AboutWideContent extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 30),
-                const WideFooter(),
+                 WideFooter(),
               ],
             ),
           ),

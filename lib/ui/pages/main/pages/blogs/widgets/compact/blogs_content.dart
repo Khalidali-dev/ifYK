@@ -1,7 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:ifyk_landing/constants/constants.dart';
 import 'package:ifyk_landing/models/blogs_model.dart';
+import 'package:ifyk_landing/ui/pages/main/pages/home/widgets/compact/widgets/compact_footer.dart';
 import 'package:ifyk_landing/ui/pages/main/pages/home/widgets/wide/widgets/news_letter_widget.dart';
+import 'package:ifyk_landing/ui/pages/main/pages/home/widgets/wide/widgets/ready_to_explore_widget.dart';
+import 'package:ifyk_landing/ui/pages/main/pages/home/widgets/wide/widgets/wide_footer.dart';
+import 'package:ifyk_landing/ui/utils/size_util.dart';
 
 class BlogsContent extends StatelessWidget {
   final TabsRouter tabsRouter;
@@ -13,179 +18,114 @@ class BlogsContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
+    const double maxWidth = 800;
+    final screenWidth = SizeUtil.screenWidth(context) < maxWidth
+        ? SizeUtil.screenWidth(context)
+        : maxWidth;
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
-      padding: EdgeInsets.all(size.width > 500 ? 30 : 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            width: size.width,
-            height: size.width > 500 ? size.height * .55 : size.height * .25,
-            padding: const EdgeInsets.all(15),
-             margin: const EdgeInsets.symmetric(horizontal:7),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(14),
-                image: const DecorationImage(
-                    image: AssetImage("assets/png/greenheader.png"),
-                    fit: BoxFit.cover)),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                SizedBox(
-                  height:
-                      size.width > 500 ? size.height * .35 : size.height * .15,
-                  width: size.width > 500 ? size.width * .5 : size.width * .8,
-                  child: Card(
-                    color: Colors.transparent,
-                    child: Padding(
-                      padding: EdgeInsets.all(size.width > 500 ? 30 : 5),
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.all(size.width > 500 ? 10 : 5),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "UI DESIGN",
-                                  style: TextStyle(
-                                      fontSize: size.width > 500 ? 12 : 10,
-                                      fontWeight: FontWeight.w400),
-                                ),
-                                Text(
-                                  "Essential UI Design Tools for Designers",
-                                  style: TextStyle(
-                                      fontSize: size.width > 500 ? 32 : 14,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                                Card(
-                                    color: const Color(0xffDF00FF),
-                                    margin: EdgeInsets.only(
-                                        top: size.width > 500 ? 20 : 10),
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(14)),
-                                    child: Padding(
-                                      padding: EdgeInsets.all(
-                                          size.width > 500 ? 15 : 10),
-                                      child: const Text(
-                                        "Read More",
-                                        style: TextStyle(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                    )),
-                              ],
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.topRight,
-                            child: CircleAvatar(
-                              radius: size.width > 500 ? 15 : 10,
-                              backgroundImage:
-                                  const AssetImage("assets/png/person1.png"),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
+          Padding(
+            padding: EdgeInsets.all(size.width > 500 ? 30 : 20),
+            child: Container(
+              width: size.width,
+              height: size.width > 500 ? size.height * .7 : size.height * .25,
+              padding: const EdgeInsets.all(30),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  image: const DecorationImage(
+                      image: AssetImage("assets/png/Background.png"),
+                      fit: BoxFit.cover)),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "World News",
+                    style: TextStyle(
+                        fontSize: size.width > 500 ? 12 : 10,
+                        fontWeight: FontWeight.w400),
                   ),
-                )
-              ],
+                  Text(
+                    "Economic turmoil markets react to global trade tensions",
+                    style: TextStyle(
+                        fontSize: size.width > 500 ? 32 : 14,
+                        fontWeight: FontWeight.w500),
+                  ),
+                  height(5),
+                  Row(
+                    children: [
+                      Text(
+                        "AUG 9, 2024",
+                        style: TextStyle(
+                            fontSize: size.width > 500 ? 12 : 10,
+                            fontWeight: FontWeight.w400),
+                      ),
+                      width(size.width * .04),
+                      Text(
+                        "WADE WARREN",
+                        style: TextStyle(
+                            fontSize: size.width > 500 ? 12 : 10,
+                            fontWeight: FontWeight.w400),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
-          SizedBox(height: size.width > 500 ? 30 : 10),
-          LayoutBuilder(
-            builder: (context, constraints) {
-              return GridView.builder(
-                padding: EdgeInsets.all(size.width > 500 ? 30 : 10),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: size.width > 500 ? 3 : 2,
-                  mainAxisSpacing: size.width > 500 ? 20 : 10,
-                  crossAxisSpacing: size.width > 500 ? 20 : 10,
-                  childAspectRatio: size.width > 500 ? 1 : .7,
-                ),
+          height(size.width > 500 ? 30 : 10),
+          Padding(
+            padding: EdgeInsets.all(size.width > 500 ? 30 : 20),
+            child: SizedBox(
+              width: size.width,
+              height: size.width > 500 ? size.height * .4 : size.height * .7,
+              child: ListView.separated(
+                separatorBuilder: (context, index) =>
+                    size.width > 500 ? width(20) : height(20),
                 itemCount: blogs.length,
                 shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
+                scrollDirection:
+                    size.width > 500 ? Axis.horizontal : Axis.vertical,
                 itemBuilder: (context, index) {
                   final blog = blogs[index];
-                  return Card(
-                    color: Colors.grey.shade900,
-                    shadowColor: Colors.grey,
-                    shape: RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.circular(size.width > 500 ? 16 : 10),
+                  return Container(
+                    width: size.width > 500 ? size.width * .25 : size.width,
+                    height: size.width > 500 ? size.height : size.height * .25,
+                    alignment: Alignment.bottomLeft,
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(6),
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage('assets/png/${blog.image}.png'),
+                      ),
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: double.infinity,
-                          height: size.width > 500 ? 250 : 120,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              topLeft:
-                                  Radius.circular(size.width > 500 ? 16 : 10),
-                              topRight:
-                                  Radius.circular(size.width > 500 ? 16 : 10),
-                            ),
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: AssetImage('assets/png/${blog.image}.png'),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(size.width > 500 ? 20 : 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(height: size.width > 500 ? 10 : 0),
-                              Text(
-                                blog.category,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: size.width > 500 ? 13 : 10,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                              SizedBox(height: size.width > 500 ? 6 : 0),
-                              Text(
-                                blog.desc,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: size.width > 500 ? 21 : 12,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: Align(
-                            alignment: Alignment.topRight,
-                            child: CircleAvatar(
-                              radius: size.width > 500 ? 15 : 10,
-                              backgroundImage:
-                                  AssetImage("assets/png/${blog.profile}.png"),
-                            ),
-                          ),
-                        ),
-                      ],
+                    child: Text(
+                      blog.desc,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: size.width > 500 ? 15 : 12,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   );
                 },
-              );
-            },
+              ),
+            ),
           ),
-          SizedBox(height: size.width > 500 ? 30 : 10),
-          NewsLetterWidget(),
+          height(size.width > 500 ? 40 : 10),
+          Padding(
+            padding: EdgeInsets.all(size.width > 500 ? 30 : 20),
+            child: NewsLetterWidget(),
+          ),
+          height(size.width > 500 ? 40 : 10),
+          size.width > 500
+              ? WideFooter()
+              : const CompactFooter(),
         ],
       ),
     );

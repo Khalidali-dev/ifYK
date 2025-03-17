@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:ifyk_landing/constants/color_palette.dart';
 import 'package:ifyk_landing/router/router.gr.dart';
-import 'package:ifyk_landing/ui/pages/main/pages/blogs/blogs_page.dart';
 import 'package:ifyk_landing/ui/pages/main/widgets/compact_app_bar.dart';
 import 'package:ifyk_landing/ui/pages/main/widgets/wide_app_bar.dart';
 import 'package:ifyk_landing/ui/utils/size_util.dart';

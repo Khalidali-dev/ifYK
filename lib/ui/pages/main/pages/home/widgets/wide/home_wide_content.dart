@@ -3,6 +3,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ifyk_landing/constants/color_palette.dart';
+import 'package:ifyk_landing/ui/pages/main/pages/home/widgets/wide/widgets/news_letter_widget.dart';
 import 'package:ifyk_landing/ui/pages/main/pages/home/widgets/wide/widgets/wide_download_widget.dart';
 import 'package:ifyk_landing/ui/pages/main/pages/home/widgets/wide/widgets/wide_feedbacks_section.dart';
 import 'package:ifyk_landing/ui/pages/main/pages/home/widgets/wide/widgets/wide_footer.dart';
@@ -78,11 +79,11 @@ class _HomeWideContentState extends State<HomeWideContent> {
                       ),
                     ],
                   ),
+                  NewsLetterWidget(),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: screenWidth / 8),
                     child: const PngAsset(
                       'smart_search',
-                      // width: double.infinity,
                     ),
                   ),
                   SizedBox(height: screenWidth / 20),
@@ -164,224 +165,11 @@ class _HomeWideContentState extends State<HomeWideContent> {
                       ],
                     ),
                   ),
-                  // Padding(
-                  //   padding: EdgeInsets.only(
-                  //     top: screenWidth/9,
-                  //     bottom: screenWidth/30,
-                  //   ),
-                  //   child: Column(
-                  //     children: [
-                  //       Padding(
-                  //         padding: const EdgeInsets.symmetric(horizontal: 40),
-                  //         child: AutoSizeText(
-                  //           "BEST THINGS TO DO ",
-                  //           maxLines: 1,
-                  //           style: GoogleFonts.unbounded(
-                  //             fontWeight: FontWeight.w500,
-                  //             fontSize: 40,
-                  //             color: ColorPalette.primary ,
-                  //           ),
-                  //         ),
-                  //       ),
-                  //       Padding(
-                  //         padding: const EdgeInsets.symmetric(horizontal: 120),
-                  //         child: AutoSizeText(
-                  //           "IN YOUR CITY",
-                  //           maxLines: 1,
-                  //           style: GoogleFonts.unbounded(
-                  //             fontWeight: FontWeight.w500,
-                  //             fontSize: 40,
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     ],
-                  //   ),
-                  // ),
                 ],
               ),
             ),
-            // Row(
-            //   children: [
-            //     Expanded(
-            //       child: GestureDetector(
-            //         onTap: ()=> context.pushRoute(CityRoute(cityId: 'new-york')),
-            //         child: SizedBox(
-            //           height: screenWidth/2,
-            //           child: Stack(
-            //             children: [
-            //               const Positioned.fill(
-            //                 child: JpgAsset(
-            //                   'new_york',
-            //                   fit: BoxFit.cover,
-            //                 ),
-            //               ),
-            //               Padding(
-            //                 padding: const EdgeInsets.only(bottom: 40,),
-            //                 child: Align(
-            //                   alignment: Alignment.bottomCenter,
-            //                   child: PngAsset(
-            //                     'new_york_text',
-            //                     height: screenWidth/30,
-            //                   ),
-            //                 ),
-            //               )
-            //             ],
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //     Expanded(
-            //       child: GestureDetector(
-            //         onTap: ()=> context.pushRoute(CityRoute(cityId: 'los-angeles')),
-            //         child: SizedBox(
-            //           height: screenWidth/2,
-            //           child: Stack(
-            //             children: [
-            //               const Positioned.fill(
-            //                 child: JpgAsset(
-            //                   'los_angeles',
-            //                   fit: BoxFit.cover,
-            //                 ),
-            //               ),
-            //               Padding(
-            //                 padding: const EdgeInsets.only(bottom: 40,),
-            //                 child: Align(
-            //                   alignment: Alignment.bottomCenter,
-            //                   child: PngAsset(
-            //                     'los_angeles_text',
-            //                     height: screenWidth/30,
-            //                   ),
-            //                 ),
-            //               )
-            //             ],
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //     Expanded(
-            //       child: GestureDetector(
-            //         onTap: ()=> context.pushRoute(CityRoute(cityId: 'chicago')),
-            //         child: SizedBox(
-            //           height: screenWidth/2,
-            //           child: Stack(
-            //             children: [
-            //               const Positioned.fill(
-            //                 child: JpgAsset(
-            //                   'chicago',
-            //                   fit: BoxFit.cover,
-            //                 ),
-            //               ),
-            //               Padding(
-            //                 padding: const EdgeInsets.only(bottom: 40,),
-            //                 child: Align(
-            //                   alignment: Alignment.bottomCenter,
-            //                   child: PngAsset(
-            //                     'chicago_text',
-            //                     height: screenWidth/30,
-            //                   ),
-            //                 ),
-            //               )
-            //             ],
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //     Expanded(
-            //       child: GestureDetector(
-            //         onTap: ()=> context.pushRoute(CityRoute(cityId: 'las-vegas')),
-            //         child: SizedBox(
-            //           height: screenWidth/2,
-            //           child: Stack(
-            //             children: [
-            //               const Positioned.fill(
-            //                 child: JpgAsset(
-            //                   'las_vegas',
-            //                   fit: BoxFit.cover,
-            //                 ),
-            //               ),
-            //               Padding(
-            //                 padding: const EdgeInsets.only(bottom: 40,),
-            //                 child: Align(
-            //                   alignment: Alignment.bottomCenter,
-            //                   child: PngAsset(
-            //                     'las_vegas_text',
-            //                     height: screenWidth/30,
-            //                   ),
-            //                 ),
-            //               ),
-            //             ],
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //     Expanded(
-            //       child: GestureDetector(
-            //         onTap: ()=> context.pushRoute(CityRoute(cityId: 'houston')),
-            //         child: SizedBox(
-            //           height: screenWidth/2,
-            //           child: Stack(
-            //             children: [
-            //               const Positioned.fill(
-            //                 child: JpgAsset(
-            //                   'houston',
-            //                   fit: BoxFit.cover,
-            //                 ),
-            //               ),
-            //               Padding(
-            //                 padding: const EdgeInsets.only(bottom: 40),
-            //                 child: Align(
-            //                   alignment: Alignment.bottomCenter,
-            //                   child: PngAsset(
-            //                     'houston_text',
-            //                     height: screenWidth/30,
-            //                   ),
-            //                 ),
-            //               )
-            //             ],
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //   ],
-            // ),
-            const SizedBox(
-              height: 50,
-            ),
-            Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Flexible(
-                    flex: 13,
-                    child: AutoSizeText(
-                      "STAY UPTO DATE WITH",
-                      minFontSize: 10,
-                      maxLines: 1,
-                      style: GoogleFonts.unbounded(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 40,
-                        color: ColorPalette.primary,
-                      ),
-                    ),
-                  ),
-                  Flexible(
-                    flex: 20,
-                    child: AutoSizeText(
-                      "OUR BLOGS",
-                      minFontSize: 10,
-                      maxLines: 1,
-                      style: GoogleFonts.unbounded(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 40,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
             const WideFeedbacksSection(),
-            const WideWrapper(
+            WideWrapper(
               maxWidth: 1200,
               child: WideFooter(),
             ),

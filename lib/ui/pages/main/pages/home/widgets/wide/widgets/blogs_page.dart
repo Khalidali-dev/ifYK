@@ -29,9 +29,9 @@ class BlogsWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(
-              height: size.width > 500 ? size.height * 0.6 : size.height * 0.5,
+              height: size.width > 410 ? size.height * 0.6 : size.height * 0.5,
               child: GridView.builder(
-                padding: EdgeInsets.all(size.width > 500 ? 30 : 20),
+                padding: EdgeInsets.all(size.width > 410 ? 30 : 20),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3, mainAxisSpacing: 20, crossAxisSpacing: 20),
                 itemCount: 6,
@@ -41,7 +41,7 @@ class BlogsWidget extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return SizedBox(
                     width:
-                        size.width > 500 ? size.width * 0.25 : size.width * 0.8,
+                        size.width > 410 ? size.width * 0.25 : size.width * 0.8,
                     child: Card(
                       color: Colors.grey.shade900,
                       shadowColor: Colors.grey,
@@ -55,7 +55,7 @@ class BlogsWidget extends StatelessWidget {
                           children: [
                             SizedBox(
                               width: double.infinity,
-                              height: size.width > 500 ? 180 : 150,
+                              height: size.width > 410 ? 180 : 150,
                               child: PngAsset(
                                 'blog${index + 1}',
                                 width: double.infinity,
@@ -78,7 +78,7 @@ class BlogsWidget extends StatelessWidget {
                                 "Mastering Digital Privacy: A Deep Dive into End-to-End Email Encryption",
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: size.width > 500 ? 21 : 16,
+                                  fontSize: size.width > 410 ? 21 : 16,
                                   fontWeight: FontWeight.w400,
                                 ),
                                 overflow: TextOverflow.ellipsis,

@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:ifyk_landing/constants/color_palette.dart';
+import 'package:ifyk_landing/constants/constants.dart';
 import 'package:ifyk_landing/ui/widgets/png_asset.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -43,7 +44,7 @@ class CompactAppBar extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            const SizedBox(height: 50),
+                            height(50),
                             GestureDetector(
                               onTap: () {
                                 if (tabsRouter.activeIndex == 0) {
@@ -62,10 +63,10 @@ class CompactAppBar extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                                 textColor: tabsRouter.activeIndex == 0
                                     ? Colors.white
-                                    : ColorPalette.white.withOpacity(.6),
+                                    : ColorPalette.white.withValues(alpha:.6),
                               ),
                             ),
-                            const SizedBox(height: 20),
+                            height(20),
                             GestureDetector(
                               onTap: () {
                                 tabsRouter.setActiveIndex(1);
@@ -77,29 +78,39 @@ class CompactAppBar extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                                 textColor: tabsRouter.activeIndex == 1
                                     ? Colors.white
-                                    : ColorPalette.white.withOpacity(.6),
+                                    : ColorPalette.white.withValues(alpha: .6),
                               ),
                             ),
-                            // const SizedBox(height: 20),
-                            // CustomText(
-                            //   label: 'Blog',
-                            //   fontSize: 35,
-                            //   fontWeight: FontWeight.bold,
-                            //   textColor: ColorPalette.white.withOpacity(.6),
-                            // ),
-                            const SizedBox(height: 20),
-                            GestureDetector(
+                            height(20),
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
                               onTap: () {
                                 tabsRouter.setActiveIndex(2);
+                                context.maybePop();
+                              },
+                              child: CustomText(
+                                label: 'Blog',
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                                textColor: tabsRouter.activeIndex == 2
+                                    ? Colors.white
+                                    : ColorPalette.white.withValues(alpha: .6),
+                              ),
+                            ),
+                            height(20),
+                            GestureDetector(
+                              onTap: () {
+                                tabsRouter.setActiveIndex(3);
                                 context.maybePop();
                               },
                               child: CustomText(
                                 label: 'Contact',
                                 fontSize: 25,
                                 fontWeight: FontWeight.bold,
-                                textColor: tabsRouter.activeIndex == 2
+                                textColor: tabsRouter.activeIndex == 3
                                     ? Colors.white
-                                    : ColorPalette.white.withOpacity(.6),
+                                    : ColorPalette.white.withValues(alpha:.6),
                               ),
                             ),
                             const Spacer(),
@@ -108,7 +119,7 @@ class CompactAppBar extends StatelessWidget {
                                   horizontal: 25, vertical: 10),
                               child: PngAsset('download_the_app'),
                             ),
-                            const SizedBox(height: 20),
+                           height(20),
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 25),
@@ -126,7 +137,7 @@ class CompactAppBar extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  const SizedBox(width: 15),
+                                 width(15),
                                   Flexible(
                                     child: GestureDetector(
                                       onTap: () {
@@ -141,7 +152,7 @@ class CompactAppBar extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            const SizedBox(height: 30)
+                            height(30),
                           ],
                         ),
                       ),

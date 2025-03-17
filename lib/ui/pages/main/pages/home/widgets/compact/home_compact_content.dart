@@ -4,7 +4,6 @@ import 'package:ifyk_landing/constants/color_palette.dart';
 import 'package:ifyk_landing/ui/widgets/png_asset.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../wide/widgets/blogs_page.dart';
 import 'widgets/compact_feedbacks_section.dart';
 import 'widgets/compact_footer.dart';
 
@@ -45,6 +44,7 @@ class _HomeCompactContentState extends State<HomeCompactContent> {
     final size = MediaQuery.of(context).size;
     return SingleChildScrollView(
       physics: const ClampingScrollPhysics(),
+   
       child: Column(
         children: [
           const Padding(
@@ -169,62 +169,6 @@ class _HomeCompactContentState extends State<HomeCompactContent> {
               width: double.infinity,
             ),
           ),
-          // const CompactCitiesSection(),
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: Wrap(
-              children: [
-                Text(
-                  "STAY UPTO DATE ",
-                  style: GoogleFonts.delaGothicOne(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 27,
-                    color: ColorPalette.primary,
-                  ),
-                ),
-                Text(
-                  "WITH",
-                  style: GoogleFonts.delaGothicOne(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 27,
-                    color: ColorPalette.primary,
-                  ),
-                ),
-                Text(
-                  " OUR BLOGS",
-                  style: GoogleFonts.delaGothicOne(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 27,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          BlogsWidget(size: size),
-          const SizedBox(
-            height: 20,
-          ),
-          Card(
-            margin: const EdgeInsets.symmetric(horizontal: 140),
-            color: Colors.grey.shade700,
-            shape: const StadiumBorder(),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [1, 2, 3, 4, 5]
-                    .map((i) => const SizedBox(
-                          width: 15,
-                          height: 15,
-                          child: Card(
-                            color: Colors.black,
-                          ),
-                        ))
-                    .toList(),
-              ),
-            ),
-          ),
-
           const CompactFeedbacksSection(),
           const CompactFooter(),
         ],

@@ -33,13 +33,13 @@ class _ContactWideContentState extends State<ContactWideContent> {
     super.dispose();
   }
 
-  _onSubmit (){
-    if(!_loading){
+  _onSubmit() {
+    if (!_loading) {
       setState(() {
         _autoValidateMode = AutovalidateMode.always;
       });
     }
-    if(_formKey.currentState!.validate()) {
+    if (_formKey.currentState!.validate()) {
       FocusScope.of(context).unfocus();
       _formKey.currentState!.save();
       setState(() {
@@ -50,15 +50,15 @@ class _ContactWideContentState extends State<ContactWideContent> {
         _nameController.text,
         _emailController.text,
         _messageController.text,
-      ).then((value){
+      ).then((value) {
         setState(() {
           _result = true;
         });
-      }).onError((error, stackTrace){
+      }).onError((error, stackTrace) {
         setState(() {
           _result = false;
         });
-      }).whenComplete((){
+      }).whenComplete(() {
         setState(() {
           _loading = false;
         });
@@ -72,12 +72,14 @@ class _ContactWideContentState extends State<ContactWideContent> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     const double maxWidth = 1200;
-    final screenWidth = SizeUtil.screenWidth(context) < maxWidth ? SizeUtil.screenWidth(context) : maxWidth;
-    final double reactivePadding = (SizeUtil.screenWidth(context) - maxWidth)/1.7;
+    final screenWidth = SizeUtil.screenWidth(context) < maxWidth
+        ? SizeUtil.screenWidth(context)
+        : maxWidth;
+    final double reactivePadding =
+        (SizeUtil.screenWidth(context) - maxWidth) / 1.7;
     final double leftPaddingWidth = reactivePadding < 30 ? 30 : reactivePadding;
     return SingleChildScrollView(
       child: Column(
@@ -106,15 +108,15 @@ class _ContactWideContentState extends State<ContactWideContent> {
                                 "CONNECT",
                                 style: GoogleFonts.unbounded(
                                   fontWeight: FontWeight.w500,
-                                  fontSize: screenWidth/35,
+                                  fontSize: screenWidth / 35,
                                 ),
                               ),
                               Text(
                                 " WITH US",
                                 style: GoogleFonts.unbounded(
                                   fontWeight: FontWeight.w500,
-                                  fontSize: screenWidth/35,
-                                  color: ColorPalette.primary ,
+                                  fontSize: screenWidth / 35,
+                                  color: ColorPalette.primary,
                                 ),
                               ),
                             ],
@@ -123,7 +125,7 @@ class _ContactWideContentState extends State<ContactWideContent> {
                             "HOW CAN WE HELP?",
                             style: GoogleFonts.unbounded(
                               fontWeight: FontWeight.w500,
-                              fontSize: screenWidth/55,
+                              fontSize: screenWidth / 55,
                             ),
                           ),
                           const SizedBox(height: 20),
@@ -131,28 +133,29 @@ class _ContactWideContentState extends State<ContactWideContent> {
                             "Have a question? Fill out the form below, and we’ll get back to you as soon as possible.",
                             style: GoogleFonts.almarai(
                               fontWeight: FontWeight.w500,
-                              fontSize: screenWidth/55,
+                              fontSize: screenWidth / 55,
                               color: ColorPalette.subtitleColor,
                             ),
                           ),
                           const SizedBox(height: 30),
                           TextFormField(
                             controller: _nameController,
-                            validator: (value) => value?.isEmpty ?? true ? "Required" : null,
+                            validator: (value) =>
+                                value?.isEmpty ?? true ? "Required" : null,
                             decoration: InputDecoration(
-                              hintText: "Name",
-                              filled: true,
-                              fillColor: ColorPalette.jumpToBgColor,
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide.none,
-                              )
-                            ),
+                                hintText: "Name",
+                                filled: true,
+                                fillColor: ColorPalette.jumpToBgColor,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: BorderSide.none,
+                                )),
                           ),
                           const SizedBox(height: 12),
                           TextFormField(
                             controller: _emailController,
-                            validator: (value) => value?.isEmpty ?? true ? "Required" : null,
+                            validator: (value) =>
+                                value?.isEmpty ?? true ? "Required" : null,
                             decoration: InputDecoration(
                                 hintText: "Email address",
                                 filled: true,
@@ -160,13 +163,13 @@ class _ContactWideContentState extends State<ContactWideContent> {
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide: BorderSide.none,
-                                )
-                            ),
+                                )),
                           ),
                           const SizedBox(height: 12),
                           TextFormField(
                             controller: _messageController,
-                            validator: (value) => value?.isEmpty ?? true ? "Required" : null,
+                            validator: (value) =>
+                                value?.isEmpty ?? true ? "Required" : null,
                             maxLines: 4,
                             decoration: InputDecoration(
                                 hintText: "Message",
@@ -175,8 +178,7 @@ class _ContactWideContentState extends State<ContactWideContent> {
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide: BorderSide.none,
-                                )
-                            ),
+                                )),
                           ),
                           const SizedBox(height: 18),
                           SizedBox(
@@ -191,45 +193,50 @@ class _ContactWideContentState extends State<ContactWideContent> {
                               child: const Text(
                                 "Submit",
                                 style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16
-                                ),
+                                    fontWeight: FontWeight.bold, fontSize: 16),
                               ),
                             ),
                           ),
                           const SizedBox(height: 20),
-                          if(_loading) const Center(
-                            child: SizedBox(
-                              height: 35,
-                              width: 35,
-                              child: CircularProgressIndicator()
-                            ),
-                          )
-                          else const SizedBox(height: 35),
-                          if(_result != null) Text(
-                            _result! ? "Message Submitted" : "Something went wrong",
-                            style: TextStyle(
-                                color: _result! ? Colors.green : Colors.red
-                            ),
-                          )
+                          if (_loading)
+                            const Center(
+                              child: SizedBox(
+                                  height: 35,
+                                  width: 35,
+                                  child: CircularProgressIndicator()),
+                            )
+                          else
+                            const SizedBox(height: 35),
+                          if (_result != null)
+                            Text(
+                              _result!
+                                  ? "Message Submitted"
+                                  : "Something went wrong",
+                              style: TextStyle(
+                                  color: _result! ? Colors.green : Colors.red),
+                            )
                         ],
                       ),
                     ),
                   ),
                   const SizedBox(width: 30),
                   const Expanded(
-                    flex: 6 ,
+                    flex: 6,
                     child: ClipRRect(
-                      borderRadius: BorderRadius.horizontal(left: Radius.circular(70)),
-                      child: PngAsset('contact_us', fit: BoxFit.fitWidth,),
+                      borderRadius:
+                          BorderRadius.horizontal(left: Radius.circular(70)),
+                      child: PngAsset(
+                        'contact_us',
+                        fit: BoxFit.fitWidth,
+                      ),
                     ),
                   )
                 ],
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
             child: WideWrapper(
               maxWidth: maxWidth,
               child: WideFooter(topPadding: 50),
