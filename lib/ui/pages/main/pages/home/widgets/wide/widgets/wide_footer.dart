@@ -52,7 +52,8 @@ class WideFooter extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.only(right: screenWidth / 30),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   MenuTextWidget(
                                     onTap: () => tabsRouter.setActiveIndex(1),
@@ -83,11 +84,7 @@ class WideFooter extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Expanded(
-                          flex: 2,
-                          child: NewsLetterTextWidget(
-                            subscribeController: subscribeController,
-                          )),
+                      Expanded(flex: 2, child: NewsLetterTextWidget()),
                     ],
                   ),
                 ],
@@ -100,8 +97,11 @@ class WideFooter extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 30),
-                child: Text('Copyright 2024, ifYK. All Rights Reserved',
-                    style: GoogleFonts.delaGothicOne(fontSize: 12)),
+                child: Text(
+                  'Copyright 2024, ifYK. All Rights Reserved',
+                  style: GoogleFonts.delaGothicOne(
+                      fontSize: 12, fontWeight: FontWeight.w400),
+                ),
               )
             ],
           ),

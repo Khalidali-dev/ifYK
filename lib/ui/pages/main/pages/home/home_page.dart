@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:ifyk_landing/ui/pages/main/pages/home/widgets/compact/home_compact_content.dart';
 import 'package:ifyk_landing/ui/pages/main/pages/home/widgets/wide/home_wide_content.dart';
 import 'package:ifyk_landing/ui/utils/size_util.dart';
 
@@ -14,7 +13,8 @@ class HomePage extends StatelessWidget {
     final isCompact = SizeUtil.isCompact(context);
     print(isCompact);
     if (isCompact) {
-      return const HomeCompactContent();
+      return HomeWideContent(tabsRouter: tabsRouter);
+      // return const HomeCompactContent();
     } else {
       return HomeWideContent(tabsRouter: tabsRouter);
     }

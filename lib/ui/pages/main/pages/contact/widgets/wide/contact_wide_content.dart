@@ -2,11 +2,14 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ifyk_landing/constants/color_palette.dart';
+import 'package:ifyk_landing/constants/constants.dart';
 import 'package:ifyk_landing/services/repository.dart';
 import 'package:ifyk_landing/ui/pages/main/pages/home/widgets/wide/widgets/wide_footer.dart';
 import 'package:ifyk_landing/ui/pages/main/widgets/wide_wrapper.dart';
 import 'package:ifyk_landing/ui/utils/size_util.dart';
 import 'package:ifyk_landing/ui/widgets/png_asset.dart';
+
+import '../../../home/widgets/compact/widgets/compact_footer.dart';
 
 class ContactWideContent extends StatefulWidget {
   final TabsRouter tabsRouter;
@@ -81,167 +84,307 @@ class _ContactWideContentState extends State<ContactWideContent> {
     final double reactivePadding =
         (SizeUtil.screenWidth(context) - maxWidth) / 1.7;
     final double leftPaddingWidth = reactivePadding < 30 ? 30 : reactivePadding;
+    final size = MediaQuery.of(context).size;
     return SingleChildScrollView(
       child: Column(
         children: [
-          const SizedBox(height: 50),
-          Align(
-            alignment: Alignment.centerRight,
-            child: Container(
-              // constraints: const BoxConstraints(maxWidth: 1300),
-              padding: EdgeInsets.only(left: leftPaddingWidth),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    flex: 4,
-                    child: Form(
-                      key: _formKey,
-                      autovalidateMode: _autoValidateMode,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(
-                                "CONNECT",
-                                style: GoogleFonts.unbounded(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: screenWidth / 35,
-                                ),
-                              ),
-                              Text(
-                                " WITH US",
-                                style: GoogleFonts.unbounded(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: screenWidth / 35,
-                                  color: ColorPalette.primary,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Text(
-                            "HOW CAN WE HELP?",
-                            style: GoogleFonts.unbounded(
-                              fontWeight: FontWeight.w500,
-                              fontSize: screenWidth / 55,
+          height(50),
+          size.width > 500
+              ? Align(
+                  alignment: Alignment.centerRight,
+                  child: Container(
+                    // constraints: const BoxConstraints(maxWidth: 1300),
+                    padding: EdgeInsets.only(left: leftPaddingWidth),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          flex: 4,
+                          child: Form(
+                              key: _formKey,
+                              autovalidateMode: _autoValidateMode,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(
+                                        "CONNECT",
+                                        style: GoogleFonts.unbounded(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: screenWidth / 35,
+                                        ),
+                                      ),
+                                      Text(
+                                        " WITH US",
+                                        style: GoogleFonts.unbounded(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: screenWidth / 35,
+                                          color: ColorPalette.primary,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Text(
+                                    "HOW CAN WE HELP?",
+                                    style: GoogleFonts.unbounded(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: screenWidth / 55,
+                                    ),
+                                  ),
+                                  height(20),
+                                  Text(
+                                    "Have a question? Fill out the form below, and we’ll get back to you as soon as possible.",
+                                    style: GoogleFonts.almarai(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: screenWidth / 55,
+                                      color: ColorPalette.subtitleColor,
+                                    ),
+                                  ),
+                                  height(30),
+                                  TextFormField(
+                                    controller: _nameController,
+                                    validator: (value) => value?.isEmpty ?? true
+                                        ? "Required"
+                                        : null,
+                                    decoration: InputDecoration(
+                                        hintText: "Name",
+                                        filled: true,
+                                        fillColor: ColorPalette.jumpToBgColor,
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          borderSide: BorderSide.none,
+                                        )),
+                                  ),
+                                  height(12),
+                                  TextFormField(
+                                    controller: _emailController,
+                                    validator: (value) => value?.isEmpty ?? true
+                                        ? "Required"
+                                        : null,
+                                    decoration: InputDecoration(
+                                        hintText: "Email address",
+                                        filled: true,
+                                        fillColor: ColorPalette.jumpToBgColor,
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          borderSide: BorderSide.none,
+                                        )),
+                                  ),
+                                  height(12),
+                                  TextFormField(
+                                    controller: _messageController,
+                                    validator: (value) => value?.isEmpty ?? true
+                                        ? "Required"
+                                        : null,
+                                    maxLines: 4,
+                                    decoration: InputDecoration(
+                                        hintText: "Message",
+                                        filled: true,
+                                        fillColor: ColorPalette.jumpToBgColor,
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          borderSide: BorderSide.none,
+                                        )),
+                                  ),
+                                  height(18),
+                                  SizedBox(
+                                    width: double.infinity,
+                                    height: 50,
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.white,
+                                        foregroundColor: Colors.black,
+                                      ),
+                                      onPressed: _onSubmit,
+                                      child: const Text(
+                                        "Submit",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16),
+                                      ),
+                                    ),
+                                  ),
+                                  height(20),
+                                  if (_loading)
+                                    const Center(
+                                      child: SizedBox(
+                                          height: 35,
+                                          width: 35,
+                                          child: CircularProgressIndicator()),
+                                    )
+                                  else
+                                    height(35),
+                                  if (_result != null)
+                                    Text(
+                                      _result!
+                                          ? "Message Submitted"
+                                          : "Something went wrong",
+                                      style: TextStyle(
+                                          color: _result!
+                                              ? Colors.green
+                                              : Colors.red),
+                                    )
+                                ],
+                              )),
+                        ),
+                        width(30),
+                        const Expanded(
+                          flex: 6,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.horizontal(
+                                left: Radius.circular(70)),
+                            child: PngAsset(
+                              'contact_us',
+                              fit: BoxFit.fitWidth,
                             ),
                           ),
-                          const SizedBox(height: 20),
-                          Text(
-                            "Have a question? Fill out the form below, and we’ll get back to you as soon as possible.",
-                            style: GoogleFonts.almarai(
-                              fontWeight: FontWeight.w500,
-                              fontSize: screenWidth / 55,
-                              color: ColorPalette.subtitleColor,
-                            ),
-                          ),
-                          const SizedBox(height: 30),
-                          TextFormField(
-                            controller: _nameController,
-                            validator: (value) =>
-                                value?.isEmpty ?? true ? "Required" : null,
-                            decoration: InputDecoration(
-                                hintText: "Name",
-                                filled: true,
-                                fillColor: ColorPalette.jumpToBgColor,
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide.none,
-                                )),
-                          ),
-                          const SizedBox(height: 12),
-                          TextFormField(
-                            controller: _emailController,
-                            validator: (value) =>
-                                value?.isEmpty ?? true ? "Required" : null,
-                            decoration: InputDecoration(
-                                hintText: "Email address",
-                                filled: true,
-                                fillColor: ColorPalette.jumpToBgColor,
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide.none,
-                                )),
-                          ),
-                          const SizedBox(height: 12),
-                          TextFormField(
-                            controller: _messageController,
-                            validator: (value) =>
-                                value?.isEmpty ?? true ? "Required" : null,
-                            maxLines: 4,
-                            decoration: InputDecoration(
-                                hintText: "Message",
-                                filled: true,
-                                fillColor: ColorPalette.jumpToBgColor,
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide.none,
-                                )),
-                          ),
-                          const SizedBox(height: 18),
-                          SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.white,
-                                foregroundColor: Colors.black,
-                              ),
-                              onPressed: _onSubmit,
-                              child: const Text(
-                                "Submit",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 20),
-                          if (_loading)
-                            const Center(
-                              child: SizedBox(
-                                  height: 35,
-                                  width: 35,
-                                  child: CircularProgressIndicator()),
-                            )
-                          else
-                            const SizedBox(height: 35),
-                          if (_result != null)
-                            Text(
-                              _result!
-                                  ? "Message Submitted"
-                                  : "Something went wrong",
-                              style: TextStyle(
-                                  color: _result! ? Colors.green : Colors.red),
-                            )
-                        ],
-                      ),
+                        )
+                      ],
                     ),
                   ),
-                  const SizedBox(width: 30),
-                  const Expanded(
-                    flex: 6,
-                    child: ClipRRect(
-                      borderRadius:
-                          BorderRadius.horizontal(left: Radius.circular(70)),
-                      child: PngAsset(
-                        'contact_us',
-                        fit: BoxFit.fitWidth,
+                )
+              : Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            "CONNECT",
+                            style: GoogleFonts.unbounded(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 30,
+                            ),
+                          ),
+                          Text(
+                            " WITH US",
+                            style: GoogleFonts.unbounded(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 30,
+                              color: ColorPalette.primary,
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: WideWrapper(
-              maxWidth: maxWidth,
-              child: WideFooter(topPadding: 50),
-            ),
-          )
+                      Text(
+                        "HOW CAN WE HELP?",
+                        style: GoogleFonts.unbounded(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 25,
+                        ),
+                      ),
+                      height(20),
+                      Text(
+                        "Have a question? Fill out the form below, and we’ll get back to you as soon as possible.",
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.almarai(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 20,
+                          color: ColorPalette.subtitleColor,
+                        ),
+                      ),
+                      height(30),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(30),
+                        child: const PngAsset(
+                          'contact_us',
+                          fit: BoxFit.fitWidth,
+                        ),
+                      ),
+                      height(20),
+                      TextFormField(
+                        controller: _nameController,
+                        validator: (value) =>
+                            value?.isEmpty ?? true ? "Required" : null,
+                        decoration: InputDecoration(
+                            hintText: "Name",
+                            filled: true,
+                            fillColor: ColorPalette.jumpToBgColor,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide.none,
+                            )),
+                      ),
+                      height(12),
+                      TextFormField(
+                        controller: _emailController,
+                        validator: (value) =>
+                            value?.isEmpty ?? true ? "Required" : null,
+                        decoration: InputDecoration(
+                            hintText: "Email address",
+                            filled: true,
+                            fillColor: ColorPalette.jumpToBgColor,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide.none,
+                            )),
+                      ),
+                      height(12),
+                      TextFormField(
+                        controller: _messageController,
+                        validator: (value) =>
+                            value?.isEmpty ?? true ? "Required" : null,
+                        maxLines: 4,
+                        decoration: InputDecoration(
+                            hintText: "Message",
+                            filled: true,
+                            fillColor: ColorPalette.jumpToBgColor,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide.none,
+                            )),
+                      ),
+                      height(18),
+                      SizedBox(
+                        width: double.infinity,
+                        height: 50,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white,
+                            foregroundColor: Colors.black,
+                          ),
+                          onPressed: _onSubmit,
+                          child: const Text(
+                            "Submit",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16),
+                          ),
+                        ),
+                      ),
+                      height(20),
+                      if (_loading)
+                        const Center(
+                          child: SizedBox(
+                              height: 35,
+                              width: 35,
+                              child: CircularProgressIndicator()),
+                        )
+                      else
+                        const SizedBox(height: 35),
+                      if (_result != null)
+                        Text(
+                          _result!
+                              ? "Message Submitted"
+                              : "Something went wrong",
+                          style: TextStyle(
+                              color: _result! ? Colors.green : Colors.red),
+                        )
+                    ],
+                  ),
+                ),
+          size.width > 500
+              ? WideWrapper(
+                  maxWidth: 1200,
+                  child: WideFooter(),
+                )
+              : const CompactFooter(),
         ],
       ),
     );

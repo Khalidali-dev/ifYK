@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ifyk_landing/services/api_service.dart';
 import 'package:ifyk_landing/ui/widgets/png_asset.dart';
 
 class NewsLetterWidget extends StatelessWidget {
@@ -21,12 +22,11 @@ class NewsLetterWidget extends StatelessWidget {
       child: Padding(
         padding: size.width > 500
             ? const EdgeInsets.all(50)
-            : const EdgeInsets.all(20),
+            : const EdgeInsets.all(30),
         child: size.width > 500
             ? Row(
                 children: [
-                  NewsLetterTextWidget(
-                      subscribeController: subscribeController),
+                  NewsLetterTextWidget(),
                   const Spacer(),
                   PngAsset(
                     "email",
@@ -35,20 +35,9 @@ class NewsLetterWidget extends StatelessWidget {
                   )
                 ],
               )
-            : Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: PngAsset(
-                      "email",
-                      width: size.width * .5,
-                      height: size.height * .2,
-                    ),
-                  ),
-                  NewsLetterTextWidget(
-                      subscribeController: subscribeController),
-                ],
+            : Padding(
+                padding: const EdgeInsets.symmetric(vertical: 30),
+                child: NewsLetterTextWidget(),
               ),
       ),
     );
@@ -56,12 +45,13 @@ class NewsLetterWidget extends StatelessWidget {
 }
 
 class NewsLetterTextWidget extends StatelessWidget {
-  const NewsLetterTextWidget({
+  NewsLetterTextWidget({
     super.key,
-    required this.subscribeController,
+    this.isdesc = true,
   });
 
-  final TextEditingController subscribeController;
+  TextEditingController subscribeController = TextEditingController();
+  final bool isdesc;
 
   @override
   Widget build(BuildContext context) {
@@ -79,14 +69,18 @@ class NewsLetterTextWidget extends StatelessWidget {
                 fontSize: size.width > 500 ? 40 : 32,
                 fontWeight: FontWeight.w400),
           ),
-          const Text(
-            """
+          isdesc
+              ? const Text(
+                  """
 Sign up for your daily dose of creative
 inspiration, learnings, and growth.
     """,
-            style: TextStyle(
-                color: Colors.white, fontSize: 16, fontWeight: FontWeight.w400),
-          ),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400),
+                )
+              : const SizedBox.shrink(),
           Card(
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -110,7 +104,13 @@ inspiration, learnings, and growth.
                   backgroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8))),
-              onPressed: () async {},
+              onPressed: () async {
+                await ApiService()
+                    .subscribe(subscribeController.text.toString().trim())
+                    .then((value) => ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                            content: Text("You subscribed successfully"))));
+              },
               child: const Text(
                 "Submit",
                 style: TextStyle(

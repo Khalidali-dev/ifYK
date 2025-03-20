@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:ifyk_landing/models/blogs_model.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 const bool production = true;
@@ -42,31 +43,62 @@ class ApiService {
       rethrow;
     }
   }
-Future<Response?> subscribe(String email) async {
-  try {
+
+  String baseUrl = 'http://192.168.18.16:3000';
+
+  Future<Response?> subscribe(String email) async {
+    try {
+      Dio dio = Dio();
+
+      String url = '$baseUrl/addContact';
+
+      var response = await dio.post(
+        url,
+        options: Options(
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        ),
+        data: {
+          'email': email,
+        },
+      );
+
+      print(email);
+      print('Subscription Success: ${response.data}');
+      return response;
+    } on DioException catch (e) {
+      print('Subscription Error: ${e.message}');
+      if (e.response != null) {
+        print('Status Code: ${e.response?.statusCode}');
+        print('Data: ${e.response?.data}');
+      } else {
+        print('Error sending request!');
+      }
+      return null;
+    } catch (e) {
+      print('Unexpected Error: $e');
+      return null;
+    }
+  }
+
+  Future<BlogsModel?> getAllBlogs() async {
     Dio dio = Dio();
 
-    String url =
-        'https://outlook.us7.list-manage.com/subscribe/post?u=788dcd1b8206c48608cb9d999&id=2ffcde95d2&f_id=009e8be0f0';
+    String url = '$baseUrl/getBlogs';
 
-    var response = await dio.post(
-      url,
-      options: Options(
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-      ),
-      data: {
-        'EMAIL': email,
-      },
-    );
-
-    print('Subscription Success: ${response.data}');
-    return response;
-  } on DioException catch (e) {
-    print('Subscription Error: ${e.response?.data ?? e.message}');
-    return null;
+    try {
+      final response = await dio.get(url);
+      print("ALL BLOGS ${response.data}");
+      if (response.statusCode == 200) {
+        return BlogsModel.fromJson(response.data);
+      } else {
+        print("Failed with status: ${response.statusCode}");
+        return null;
+      }
+    } catch (e) {
+      print("Error in blogs ${e.toString()}");
+      return null;
+    }
   }
-}
-
 }

@@ -20,6 +20,11 @@ class CompactAppBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: Row(
         children: [
+          const PngAsset(
+            'logo',
+            height: 25,
+          ),
+          const Spacer(),
           GestureDetector(
             onTap: () {
               showDialog(
@@ -63,7 +68,7 @@ class CompactAppBar extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                                 textColor: tabsRouter.activeIndex == 0
                                     ? Colors.white
-                                    : ColorPalette.white.withValues(alpha:.6),
+                                    : ColorPalette.white.withValues(alpha: .6),
                               ),
                             ),
                             height(20),
@@ -110,7 +115,7 @@ class CompactAppBar extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                                 textColor: tabsRouter.activeIndex == 3
                                     ? Colors.white
-                                    : ColorPalette.white.withValues(alpha:.6),
+                                    : ColorPalette.white.withValues(alpha: .6),
                               ),
                             ),
                             const Spacer(),
@@ -119,7 +124,7 @@ class CompactAppBar extends StatelessWidget {
                                   horizontal: 25, vertical: 10),
                               child: PngAsset('download_the_app'),
                             ),
-                           height(20),
+                            height(20),
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 25),
@@ -137,7 +142,7 @@ class CompactAppBar extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                 width(15),
+                                  width(15),
                                   Flexible(
                                     child: GestureDetector(
                                       onTap: () {
@@ -162,11 +167,6 @@ class CompactAppBar extends StatelessWidget {
               );
             },
             child: const PngAsset('app_bar_menu'),
-          ),
-          const Spacer(),
-          const PngAsset(
-            'logo',
-            height: 25,
           ),
 
           // IconButton(

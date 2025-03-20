@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:ifyk_landing/constants/color_palette.dart';
+import 'package:ifyk_landing/constants/constants.dart';
+import 'package:ifyk_landing/ui/pages/main/pages/home/widgets/compact/home_compact_content.dart';
 import 'package:ifyk_landing/ui/pages/main/pages/home/widgets/wide/widgets/news_letter_widget.dart';
 import 'package:ifyk_landing/ui/pages/main/pages/home/widgets/wide/widgets/wide_download_widget.dart';
 import 'package:ifyk_landing/ui/pages/main/pages/home/widgets/wide/widgets/wide_feedbacks_section.dart';
@@ -10,6 +10,10 @@ import 'package:ifyk_landing/ui/pages/main/pages/home/widgets/wide/widgets/wide_
 import 'package:ifyk_landing/ui/pages/main/widgets/wide_wrapper.dart';
 import 'package:ifyk_landing/ui/utils/size_util.dart';
 import 'package:ifyk_landing/ui/widgets/png_asset.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import '../compact/widgets/compact_footer.dart';
+import 'widgets/vertical_heading_widget.dart';
 
 class HomeWideContent extends StatefulWidget {
   final TabsRouter tabsRouter;
@@ -34,145 +38,186 @@ class _HomeWideContentState extends State<HomeWideContent> {
             WideWrapper(
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Container(
-                          padding: EdgeInsets.only(left: screenWidth / 20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              SizedBox(height: screenWidth / 8),
-                              const PngAsset('all_events_one_place'),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                  left: screenWidth / 30,
+                  size.width > 500
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: Container(
+                                padding:
+                                    EdgeInsets.only(left: screenWidth / 20),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    SizedBox(height: screenWidth / 8),
+                                    const PngAsset('all_events_one_place'),
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                        left: screenWidth / 30,
+                                      ),
+                                      child: const WideDownloadWidget(
+                                          isHeader: true),
+                                    ),
+                                    SizedBox(height: screenWidth / 15)
+                                  ],
                                 ),
-                                child: const WideDownloadWidget(isHeader: true),
                               ),
-                              SizedBox(height: screenWidth / 15)
-                              // Row(
-                              //   children: [
-                              //     SizedBox(width: screenWidth/30),
-                              //     Padding(
-                              //       padding: EdgeInsets.only(top: screenWidth/50),
-                              //       child: PngAsset('party', width: screenWidth/35,),
-                              //     ),
-                              //   ],
-                              // ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 50),
-                      const Expanded(
-                        child: Padding(
-                          padding: EdgeInsets.only(top: 80),
-                          child: PngAsset(
-                            'main_images',
-                            alignment: Alignment.topRight,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  NewsLetterWidget(),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: screenWidth / 8),
-                    child: const PngAsset(
-                      'smart_search',
-                    ),
-                  ),
-                  SizedBox(height: screenWidth / 20),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: screenWidth / 8),
-                    child: const PngAsset(
-                      'going_out_made_easy',
-                    ),
-                  ),
-                  SizedBox(height: screenWidth / 20),
-                  Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 60),
-                        child: AutoSizeText(
-                          "NEVER MISS OUT",
-                          maxLines: 1,
-                          minFontSize: 15,
-                          style: GoogleFonts.unbounded(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 40,
-                            color: ColorPalette.primary,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 40),
-                        child: AutoSizeText(
-                          "ON LOCAL EVENTS",
-                          maxLines: 1,
-                          minFontSize: 15,
-                          style: GoogleFonts.unbounded(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 40,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: screenWidth / 30),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: screenWidth / 30),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Center(
-                            child: PngAsset(
-                              'interactive_map_view',
-                              height: screenWidth / 2,
                             ),
-                          ),
-                        ),
-                        SizedBox(width: screenWidth / 20),
-                        Expanded(
-                          child: Center(
-                            child: PngAsset(
-                              'easy_filters',
-                              height: screenWidth / 2,
-                            ),
-                          ),
+                            const SizedBox(width: 50),
+                            const Expanded(
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 80),
+                                child: PngAsset(
+                                  'main_images',
+                                  alignment: Alignment.topRight,
+                                ),
+                              ),
+                            )
+                          ],
                         )
-                      ],
+                      : Column(
+                          children: [
+                            const Padding(
+                              padding:
+                                  EdgeInsets.only(top: 30, left: 30, right: 30),
+                              child: PngAsset(
+                                'all_events_one_place_compact',
+                              ),
+                            ),
+                            Stack(
+                              children: [
+                                const Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 40),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      PngAsset(
+                                        height: 30,
+                                        'party',
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(top: 10),
+                                        child: PngAsset(
+                                          height: 30,
+                                          'fire',
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 100, right: 100, top: 20),
+                                  child: Row(
+                                    children: [
+                                      Flexible(
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            launchUrl(Uri.parse(
+                                                'https://apps.apple.com/us/app/ifyk/id6468367267'));
+                                          },
+                                          child: Transform.scale(
+                                            scale: 1.6,
+                                            child: const PngAsset(
+                                              'app_store',
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(width: 50),
+                                      Flexible(
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            launchUrl(Uri.parse(
+                                                'https://play.google.com/store/apps/details?id=com.ifyk'));
+                                          },
+                                          child: Transform.scale(
+                                              scale: 1.6,
+                                              child: const PngAsset(
+                                                  'google_play')),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 20),
+                            const PngAsset(
+                              'main_images_compact',
+                              fit: BoxFit.fitWidth,
+                              width: double.infinity,
+                            ),
+                          ],
+                        ),
+                  NewsLetterWidget(),
+                  height(20),
+                  size.width > 500
+                      ? const SizedBox()
+                      : const VerticalHeadingWidget(
+                          title1: "SEARCH FOR ",
+                          title2: "EVENTS WITH AI",
+                          fontSize1: 27,
+                          fontSize2: 27,
+                          weight1: FontWeight.w500,
+                          weight2: FontWeight.w500,
+                          color1: Colors.white,
+                          color2: ColorPalette.primary),
+                  height(10),
+                  const CarouselSliderWidget(),
+                  SizedBox(height: screenWidth / 20),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: screenWidth / 8),
+                    child: PngAsset(
+                      size.width > 500
+                          ? 'going_out_made_easy'
+                          : 'going_out_made_easy_compact',
+                      fit: size.width > 500 ? BoxFit.contain : BoxFit.fitWidth,
+                      width: double.infinity,
                     ),
                   ),
                   SizedBox(height: screenWidth / 10),
-                  SizedBox(
-                    width: double.infinity,
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 40),
-                          child: Container(
-                            constraints: const BoxConstraints(maxWidth: 1200),
-                            child: const PngAsset(
-                              'swipe_scroll_discover',
-                            ),
+                  size.width > 500
+                      ? SizedBox(
+                          width: double.infinity,
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 40),
+                                child: Container(
+                                  constraints:
+                                      const BoxConstraints(maxWidth: 1200),
+                                  child: const PngAsset(
+                                    'swipe_scroll_discover',
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      : const Padding(
+                          padding:
+                              EdgeInsets.only(left: 20, right: 20, top: 70),
+                          child: PngAsset(
+                            'swipe_scroll_discover_compact',
+                            fit: BoxFit.fitWidth,
+                            width: double.infinity,
                           ),
                         ),
-                      ],
-                    ),
-                  ),
                 ],
               ),
             ),
             const WideFeedbacksSection(),
-            WideWrapper(
-              maxWidth: 1200,
-              child: WideFooter(),
-            ),
+            size.width > 500
+                ? WideWrapper(
+                    maxWidth: 1200,
+                    child: WideFooter(),
+                  )
+                : const CompactFooter(),
           ],
         ),
       ),

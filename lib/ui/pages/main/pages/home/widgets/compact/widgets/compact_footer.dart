@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ifyk_landing/constants/color_palette.dart';
 import 'package:ifyk_landing/constants/constants.dart';
 import 'package:ifyk_landing/router/router.gr.dart';
+import 'package:ifyk_landing/ui/pages/main/pages/home/widgets/wide/widgets/news_letter_widget.dart';
 import 'package:ifyk_landing/ui/widgets/png_asset.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -20,6 +21,7 @@ class CompactFooter extends StatelessWidget {
     final tabsRouter = AutoTabsRouter.of(context);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 30),
+      alignment: Alignment.topCenter,
       decoration: const BoxDecoration(
           image: DecorationImage(image: AssetImage("assets/png/cut blob.png"))),
       child: Column(
@@ -115,11 +117,15 @@ class CompactFooter extends StatelessWidget {
                 child: Center(
                   child: Text(
                     'Copyright 2024, ifYK. All Rights Reserved',
-                    style: GoogleFonts.unbounded(fontSize: 12),
+                    style: GoogleFonts.delaGothicOne(
+                        fontSize: 12, fontWeight: FontWeight.w400),
                   ),
                 ),
               ),
-              height(10),
+              NewsLetterTextWidget(
+                isdesc: false,
+              ),
+              height(40)
             ],
           ),
         ],

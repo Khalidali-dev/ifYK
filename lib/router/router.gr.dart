@@ -10,7 +10,6 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i9;
 import 'package:flutter/material.dart' as _i10;
-import 'package:ifyk_landing/ui/pages/city/city_page.dart' as _i3;
 import 'package:ifyk_landing/ui/pages/main/main_page.dart' as _i7;
 import 'package:ifyk_landing/ui/pages/main/pages/about/about_page.dart' as _i1;
 import 'package:ifyk_landing/ui/pages/main/pages/blogs/blogs_page.dart' as _i2;
@@ -37,18 +36,6 @@ abstract class $AppRouter extends _i9.RootStackRouter {
       return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i2.BlogsPage(),
-      );
-    },
-    CityRoute.name: (routeData) {
-      final pathParams = routeData.inheritedPathParams;
-      final args = routeData.argsAs<CityRouteArgs>(
-          orElse: () => CityRouteArgs(cityId: pathParams.getString('id')));
-      return _i9.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i3.CityPage(
-          key: args.key,
-          cityId: args.cityId,
-        ),
       );
     },
     ContactRoute.name: (routeData) {

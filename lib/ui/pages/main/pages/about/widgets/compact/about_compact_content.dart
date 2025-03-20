@@ -9,8 +9,7 @@ class AboutCompactContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    Widget buildFeature(String title, String subtitle){
+    Widget buildFeature(String title, String subtitle) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -62,7 +61,7 @@ class AboutCompactContent extends StatelessWidget {
                       style: GoogleFonts.unbounded(
                         fontWeight: FontWeight.w500,
                         fontSize: 30,
-                        color: ColorPalette.primary ,
+                        color: ColorPalette.primary,
                       ),
                     ),
                   ],
@@ -77,7 +76,10 @@ class AboutCompactContent extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 30),
-                const PngAsset('about_1', fit: BoxFit.cover,),
+                const PngAsset(
+                  'about_1',
+                  fit: BoxFit.cover,
+                ),
                 const SizedBox(height: 15),
                 Text(
                   "In an era dominated by social media and digital distractions, isolation has become too easy. We believe the core issue isn't a lack of desire to be social, but a lack of information on where to go. Whether it's the overwhelming variety of options in big cities or the lack of accessible event information in smaller areas, finding things to do can be challenging.\n\nThat's why we created ifYK. Our mission is to get people out and living life by simplifying event discovery and helping people connect in the real world.",
@@ -104,7 +106,7 @@ class AboutCompactContent extends StatelessWidget {
                       style: GoogleFonts.unbounded(
                         fontWeight: FontWeight.w500,
                         fontSize: 26,
-                        color: ColorPalette.primary ,
+                        color: ColorPalette.primary,
                       ),
                     ),
                   ],
@@ -181,7 +183,7 @@ class AboutCompactContent extends StatelessWidget {
                       style: GoogleFonts.unbounded(
                         fontWeight: FontWeight.w500,
                         fontSize: 30,
-                        color: ColorPalette.primary ,
+                        color: ColorPalette.primary,
                       ),
                     ),
                   ],
@@ -199,7 +201,10 @@ class AboutCompactContent extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 40),
-                const PngAsset('about_signature_mobile', width: 300,),
+                const PngAsset(
+                  'about_signature_mobile',
+                  width: 300,
+                ),
               ],
             ),
           ),
