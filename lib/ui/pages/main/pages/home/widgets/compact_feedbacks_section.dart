@@ -101,7 +101,7 @@ class _CompactFeedbacksSectionState
                 );
               },
               error: (error, stackTrace) => const SizedBox(),
-              loading: () => const CircularProgressIndicator(),
+              loading: () => const Center(child: CircularProgressIndicator()),
             ),
       ],
     );

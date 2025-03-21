@@ -99,6 +99,10 @@ class CompactFooter extends StatelessWidget {
               ),
               height(30),
               const SocialButtonRowWidget(),
+              height(30),
+              NewsLetterTextWidget(
+                isdesc: false,
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 30),
                 child: Center(
@@ -109,10 +113,6 @@ class CompactFooter extends StatelessWidget {
                   ),
                 ),
               ),
-              NewsLetterTextWidget(
-                isdesc: false,
-              ),
-              height(40)
             ],
           ),
         ],
