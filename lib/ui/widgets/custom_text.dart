@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:ifyk_landing/constants/color_palette.dart';
+import 'package:ifyk_landing/ui/ui.dart';
 
 class CustomText extends StatelessWidget {
   final String label;

@@ -1,5 +1,4 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
+import 'package:ifyk_landing/ui/ui.dart';
 
 @RoutePage()
 class HomeRouterPage extends StatelessWidget {

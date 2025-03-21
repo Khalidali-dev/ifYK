@@ -1,0 +1,9 @@
+export 'carousel_slider_widget.dart';
+export 'compact_feedbacks_section.dart';
+export 'compact_footer.dart';
+export 'news_letter_widget.dart';
+export 'ready_to_explore_widget.dart';
+export 'vertical_heading_widget.dart';
+export 'wide_download_widget.dart';
+export 'wide_feedbacks_section.dart';
+export 'wide_footer.dart';

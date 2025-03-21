@@ -1,7 +1,4 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
-import 'package:ifyk_landing/ui/pages/main/pages/about/widgets/wide/about_wide_content.dart';
-import 'package:ifyk_landing/ui/utils/size_util.dart';
+import 'package:ifyk_landing/ui/ui.dart';
 
 @RoutePage()
 class AboutPage extends StatelessWidget {
@@ -12,9 +9,9 @@ class AboutPage extends StatelessWidget {
     final isCompact = SizeUtil.isCompact(context);
     final tabsRouter = AutoTabsRouter.of(context);
     if (isCompact) {
-      return AboutWideContent(tabsRouter: tabsRouter);
+      return AboutContent(tabsRouter: tabsRouter);
     } else {
-      return AboutWideContent(tabsRouter: tabsRouter);
+      return AboutContent(tabsRouter: tabsRouter);
     }
   }
 }

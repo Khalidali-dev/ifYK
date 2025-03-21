@@ -1,6 +1,4 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
-import 'package:ifyk_landing/ui/pages/main/pages/blogs/widgets/compact/blogs_content.dart';
+import 'package:ifyk_landing/ui/ui.dart';
 
 @RoutePage()
 class BlogsPage extends StatelessWidget {

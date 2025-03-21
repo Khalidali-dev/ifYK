@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:ifyk_landing/constants/color_palette.dart';
-import 'package:ifyk_landing/router/router.dart';
+import 'ui/ui.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));

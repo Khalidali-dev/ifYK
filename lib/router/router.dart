@@ -1,5 +1,4 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:ifyk_landing/router/router.gr.dart';
+import '../ui/ui.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Page,Route')
 class AppRouter extends $AppRouter {
