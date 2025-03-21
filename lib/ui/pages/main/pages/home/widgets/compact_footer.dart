@@ -109,7 +109,7 @@ class CompactFooter extends StatelessWidget {
                   child: Text(
                     'Copyright 2024, ifYK. All Rights Reserved',
                     style: GoogleFonts.delaGothicOne(
-                        fontSize: 12, fontWeight: FontWeight.w400),
+                        fontSize: 10, fontWeight: FontWeight.w300),
                   ),
                 ),
               ),
