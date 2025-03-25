@@ -4,7 +4,6 @@ void main() {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-// assets\png\image.png
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
@@ -24,7 +23,6 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         colorScheme: const ColorScheme.dark(primary: ColorPalette.primary),
       ),
-      // scrollBehavior: CustomScrollBehavior(),
       routerConfig: appRouter.config(),
     );
   }

@@ -44,7 +44,7 @@ class ApiService {
     }
   }
 
-  String baseUrl = 'http://192.168.18.16:3000';
+  String baseUrl = 'https://app.ifykevents.com/api/blogs';
 
   Future<Response?> subscribe(String email) async {
     try {

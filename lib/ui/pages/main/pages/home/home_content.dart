@@ -140,18 +140,6 @@ class _HomeWideContentState extends State<HomeWideContent> {
                         ),
                   NewsLetterWidget(),
                   height(20),
-                  size.width > 500
-                      ? const SizedBox()
-                      : const VerticalHeadingWidget(
-                          title1: "SEARCH FOR ",
-                          title2: "EVENTS WITH AI",
-                          fontSize1: 27,
-                          fontSize2: 27,
-                          weight1: FontWeight.w500,
-                          weight2: FontWeight.w500,
-                          color1: Colors.white,
-                          color2: ColorPalette.primary),
-                  height(10),
                   const CarouselSliderWidget(),
                   SizedBox(height: screenWidth / 20),
                   Padding(

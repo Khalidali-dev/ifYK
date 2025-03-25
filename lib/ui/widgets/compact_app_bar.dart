@@ -38,7 +38,7 @@ class CompactAppBar extends StatelessWidget {
                                   onTap: () {
                                     context.maybePop();
                                   },
-                                  child: const PngAsset('menu_close'),
+                                  child: const Icon(Icons.clear),
                                 ),
                               ),
                             ),
@@ -159,7 +159,7 @@ class CompactAppBar extends StatelessWidget {
                 },
               );
             },
-            child: const PngAsset('app_bar_menu'),
+            child: const Icon(Icons.menu),
           ),
 
           // IconButton(

@@ -10,9 +10,9 @@ class WideAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = SizeUtil.screenWidth(context);
     return Container(
-      constraints: const BoxConstraints(maxWidth: 1000),
+      // constraints: const BoxConstraints(maxWidth: 1000),
       margin: const EdgeInsets.only(top: 15, bottom: 15),
-      padding: EdgeInsets.symmetric(horizontal: screenWidth / 20),
+      padding: EdgeInsets.symmetric(horizontal: screenWidth / 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -26,13 +26,11 @@ class WideAppBar extends StatelessWidget {
             ),
           ),
           Container(
-            // margin: EdgeInsets.only(right: screenWidth/20),
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
             decoration: BoxDecoration(
-                color: Colors.grey.withValues(alpha: .1),
+                color: Colors.transparent,
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                    color: ColorPalette.appbarBorderColor, width: 1.5)),
+                border: Border.all(color: Colors.transparent, width: 0)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
