@@ -130,54 +130,52 @@ class WideDownloadWidget extends ConsumerWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400)),
             height(20),
-            SizedBox(
-              width: screenWidth / 2.75,
-              child: Row(
-                children: [
-                  Flexible(
-                    flex: 7,
-                    child: TextFormField(
-                      // controller: _nameController,
-                      validator: (value) =>
-                          value?.isEmpty ?? true ? "Required" : null,
-                      decoration: InputDecoration(
-                          hintText: "Enter a phone number",
-                          filled: true,
-                          fillColor: ColorPalette.jumpToBgColor,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide.none,
-                          )),
-                    ),
+            Row(
+              children: [
+                Flexible(
+                  flex: 6,
+                  child: TextFormField(
+                    // controller: _nameController,
+                    validator: (value) =>
+                        value?.isEmpty ?? true ? "Required" : null,
+                    decoration: InputDecoration(
+                        hintText: "Enter a phone number",
+                        filled: true,
+                        fillColor: ColorPalette.jumpToBgColor,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide.none,
+                        )),
                   ),
-                  width(screenWidth / 70),
-                  Flexible(
-                    flex: 4,
-                    child: SizedBox(
-                      height: 54,
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: ColorPalette.primary,
-                          foregroundColor: Colors.black,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
+                ),
+                width(screenWidth / 70),
+                Flexible(
+                  flex: 6,
+                  child: SizedBox(
+                    height: 54,
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: ColorPalette.primary,
+                        foregroundColor: Colors.black,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Text(
-                          'Send Link',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: screenWidth / 90,
-                          ),
+                      ),
+                      child: Text(
+                        'Send Link',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: screenWidth / 90,
                         ),
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
+            height(20),
           ],
         ),
       );

@@ -13,9 +13,18 @@ class CompactAppBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: Row(
         children: [
-          const PngAsset(
-            'logo',
-            height: 25,
+          GestureDetector(
+            onTap: () {
+              if (tabsRouter.activeIndex == 0) {
+                routerKeys[0].currentState?.controller?.popUntilRoot();
+              } else {
+                tabsRouter.setActiveIndex(0);
+              }
+            },
+            child: const PngAsset(
+              'logo',
+              height: 25,
+            ),
           ),
           const Spacer(),
           GestureDetector(

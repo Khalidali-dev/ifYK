@@ -29,7 +29,7 @@ class _WideFeedbacksSectionState extends ConsumerState<WideFeedbacksSection> {
                     bottom: screenWidth / 30),
                 child: Center(
                   child: Row(
-                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Flexible(
                         flex: 13,
@@ -37,9 +37,9 @@ class _WideFeedbacksSectionState extends ConsumerState<WideFeedbacksSection> {
                           "REAL STORIES ",
                           minFontSize: 10,
                           maxLines: 1,
-                          style: GoogleFonts.unbounded(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 40,
+                          style: GoogleFonts.delaGothicOne(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 32,
                             color: ColorPalette.primary,
                           ),
                         ),
@@ -50,24 +50,61 @@ class _WideFeedbacksSectionState extends ConsumerState<WideFeedbacksSection> {
                           "AND REAL EXPERIENCES",
                           minFontSize: 10,
                           maxLines: 1,
-                          style: GoogleFonts.unbounded(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 40,
+                          style: GoogleFonts.delaGothicOne(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 32,
                           ),
                         ),
                       ),
                     ],
                   ),
                 ))
-            : const VerticalHeadingWidget(
-                title1: "REAL STORIES",
-                title2: " AND REAL EXPERIENCES",
-                fontSize1: 20,
-                fontSize2: 16,
-                weight1: FontWeight.w400,
-                weight2: FontWeight.w400,
-                color1: ColorPalette.primary,
-                color2: ColorPalette.white),
+            : Padding(
+                padding: EdgeInsets.only(
+                    left: 40,
+                    right: 40,
+                    top: screenWidth / 9,
+                    bottom: screenWidth / 30),
+                child: Center(
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          AutoSizeText(
+                            "REAL STORIES ",
+                            minFontSize: 10,
+                            maxLines: 1,
+                            style: GoogleFonts.delaGothicOne(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 20,
+                              color: ColorPalette.primary,
+                            ),
+                          ),
+                          AutoSizeText(
+                            "AND ",
+                            minFontSize: 10,
+                            maxLines: 1,
+                            style: GoogleFonts.delaGothicOne(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 20,
+                              color: ColorPalette.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                      AutoSizeText(
+                        "REAL EXPERIENCES",
+                        minFontSize: 10,
+                        maxLines: 1,
+                        style: GoogleFonts.delaGothicOne(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ],
+                  ),
+                )),
         height(20),
         ref.watch(reviewsFutureProvider).when(
               data: (reviews) {

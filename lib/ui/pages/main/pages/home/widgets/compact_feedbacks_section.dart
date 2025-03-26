@@ -42,7 +42,7 @@ class _CompactFeedbacksSectionState
             fontSize: 25,
           ),
         ),
-        const SizedBox(height: 20),
+        height(20),
         ref.watch(reviewsFutureProvider).when(
               data: (reviews) {
                 return CarouselSlider(
@@ -86,7 +86,7 @@ class _CompactFeedbacksSectionState
                                   );
                                 }),
                               ),
-                              const SizedBox(height: 5),
+                              height(10),
                               CustomText(
                                 label: review.text,
                                 fontSize: 13,

@@ -4,6 +4,8 @@ import 'dart:ui_web' as ui_web;
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:ifyk_landing/ui/ui.dart';
 
+import 'blogs_details.dart';
+
 class BlogsContent extends StatelessWidget {
   final TabsRouter tabsRouter;
   const BlogsContent({
@@ -11,23 +13,99 @@ class BlogsContent extends StatelessWidget {
     required this.tabsRouter,
   });
 
-  Widget mailchimpImage(String imageUrl, String title, Size size,
-      {double width = 300, double height = 200}) {
+  Widget headerImage(
+    String imageUrl,
+    String title,
+    Size size, {
+    double height = 300,
+  }) {
     if (kIsWeb) {
       final viewId = 'mailchimp-image-${imageUrl.hashCode}';
 
       ui_web.platformViewRegistry.registerViewFactory(
         viewId,
         (int viewId) {
+          final container = html.DivElement()
+            ..style.width = '100%'
+            ..style.height = '${height}px'
+            ..style.position = 'relative'
+            ..style.overflow = 'hidden';
+
           final imgElement = html.ImageElement()
             ..src = imageUrl
-            ..style.border = 'none'
+            ..style.width = '100%'
+            ..style.height = '100%'
             ..style.borderRadius = '6px'
-            ..style.width = '${width}px'
-            ..style.height = '${height}px';
-          return imgElement;
+            ..style.objectFit = 'cover'
+            ..style.pointerEvents = 'none';
+
+          container.append(imgElement);
+
+          return container;
         },
       );
+
+      return SizedBox(
+        width: double.infinity,
+        height: height,
+        child: Stack(
+          children: [
+            HtmlElementView(viewType: viewId),
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: size.width > 500 ? 30 : 20,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: CustomText(
+                  label: title,
+                  textColor: Colors.white,
+                  fontSize: size.width > 500 ? 18 : 14,
+                  fontWeight: FontWeight.w600,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    } else {
+      return Container();
+    }
+  }
+
+  Widget mailchimpImage(String imageUrl, String title, Size size,
+      {double width = 300, double height = 200, VoidCallback? onTap}) {
+    if (kIsWeb) {
+      final viewId = 'mailchimp-image-${imageUrl.hashCode}';
+
+      ui_web.platformViewRegistry.registerViewFactory(
+        viewId,
+        (int viewId) {
+          final container = html.DivElement()
+            ..style.width = '${width}px'
+            ..style.height = '${height}px'
+            ..style.position = 'relative';
+
+          final imgElement = html.ImageElement()
+            ..src = imageUrl
+            ..style.width = '90%'
+            ..style.height = '100%'
+            ..style.borderRadius = '6px'
+            ..style.pointerEvents = 'none';
+
+          container.append(imgElement);
+
+          container.onClick.listen((_) {
+            if (onTap != null) {
+              onTap();
+            }
+          });
+
+          return container;
+        },
+      );
+
       return Padding(
         padding: EdgeInsets.symmetric(vertical: size.width > 500 ? 20 : 0),
         child: SizedBox(
@@ -39,17 +117,16 @@ class BlogsContent extends StatelessWidget {
               Positioned(
                 left: 20,
                 right: 20,
-                bottom: 50,
+                bottom: size.width > 500 ? 20 : 30,
                 child: Container(
                   width: width,
                   color: Colors.transparent,
-                  child: Text(
-                    title,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: size.width > 500 ? 15 : 12,
-                      fontWeight: FontWeight.w500,
-                    ),
+                  child: CustomText(
+                    label: title,
+                    textColor: Colors.white,
+                    fontSize: size.width > 500 ? 15 : 12,
+                    fontWeight: FontWeight.w500,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ),
@@ -65,71 +142,27 @@ class BlogsContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    const double maxWidth = 800;
-    final screenWidth = SizeUtil.screenWidth(context) < maxWidth
-        ? SizeUtil.screenWidth(context)
-        : maxWidth;
 
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: EdgeInsets.all(size.width > 500 ? 30 : 20),
-            child: Container(
-              width: size.width,
-              height: size.width > 500 ? size.height * .7 : size.height * .25,
-              padding: const EdgeInsets.all(30),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  image: const DecorationImage(
-                      image: AssetImage("assets/png/Background.png"),
-                      fit: BoxFit.cover)),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "World News",
-                    style: TextStyle(
-                        fontSize: size.width > 500 ? 12 : 10,
-                        fontWeight: FontWeight.w400),
-                  ),
-                  Text(
-                    "Economic turmoil markets react to global trade tensions",
-                    style: TextStyle(
-                        fontSize: size.width > 500 ? 32 : 14,
-                        fontWeight: FontWeight.w500),
-                  ),
-                  height(5),
-                  Row(
-                    children: [
-                      Text(
-                        "AUG 9, 2024",
-                        style: TextStyle(
-                            fontSize: size.width > 500 ? 12 : 10,
-                            fontWeight: FontWeight.w400),
-                      ),
-                      width(size.width * .04),
-                      Text(
-                        "WADE WARREN",
-                        style: TextStyle(
-                            fontSize: size.width > 500 ? 12 : 10,
-                            fontWeight: FontWeight.w400),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+          Center(
+            child: Text(
+              "Blog",
+              style: GoogleFonts.delaGothicOne(
+                  color: Colors.white,
+                  fontSize: size.width > 500 ? 40 : 32,
+                  fontWeight: FontWeight.w400),
             ),
           ),
-          height(size.width > 500 ? 30 : 10),
+          height(20),
           Padding(
             padding: EdgeInsets.all(size.width > 500 ? 30 : 20),
             child: SizedBox(
               width: size.width,
-              height: size.width > 500 ? size.height * .4 : size.height * .7,
+              height: size.width > 500 ? size.height * .93 : size.height * .52,
               child: FutureBuilder<BlogsModel?>(
                   future: ApiService().getAllBlogs(),
                   builder: (context, snapshot) {
@@ -142,32 +175,76 @@ class BlogsContent extends StatelessWidget {
                         child: Text("Something went wrong..."),
                       );
                     }
-                    return ListView.separated(
-                      separatorBuilder: (context, index) =>
-                          size.width > 500 ? width(20) : height(20),
-                      itemCount: snapshot.data!.data!.length,
-                      shrinkWrap: true,
-                      physics: const BouncingScrollPhysics(),
-                      scrollDirection:
-                          size.width > 500 ? Axis.horizontal : Axis.vertical,
-                      itemBuilder: (context, index) {
-                        final blog = snapshot.data!.data![index];
-                        return mailchimpImage(
-                            blog.image.toString(), blog.title.toString(), size,
-                            width: size.width > 500
-                                ? size.width * .25
-                                : size.width,
-                            height: size.width > 500
-                                ? size.height * .3
-                                : size.height * .25);
-                      },
+                    final item =
+                        snapshot.hasData && snapshot.data!.data!.isNotEmpty
+                            ? snapshot.data!.data!.last
+                            : null;
+
+                    return Column(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(size.width > 500 ? 30 : 0),
+                          child: SizedBox(
+                              width: size.width,
+                              height: size.width > 500
+                                  ? size.height * .5
+                                  : size.height * .22,
+                              child: headerImage(
+                                item!.image.toString(),
+                                item.title.toString(),
+                                size,
+                                height: size.width > 500
+                                    ? size.height * .5
+                                    : size.height * .22,
+                              )),
+                        ),
+                        height(size.width > 500 ? 30 : 50),
+                        SizedBox(
+                          height: size.width > 500
+                              ? size.height * .3
+                              : size.height * .2,
+                          child: ListView.separated(
+                            separatorBuilder: (context, index) => width(20),
+                            itemCount: snapshot.data!.data!.length,
+                            shrinkWrap: true,
+                            physics: const BouncingScrollPhysics(),
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              final blog = snapshot.data!.data![index];
+                              return mailchimpImage(
+                                blog.image.toString(),
+                                blog.title.toString(),
+                                size,
+                                width: size.width > 500
+                                    ? size.width * .25
+                                    : size.width,
+                                height: size.width > 500
+                                    ? size.height * .3
+                                    : size.height * .26,
+                                onTap: () {
+                                  if (context.mounted) {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => BlogsDetailsPage(
+                                          image: blog.image.toString(),
+                                          desc: blog.title.toString(),
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                },
+                              );
+                            },
+                          ),
+                        ),
+                      ],
                     );
                   }),
             ),
           ),
-          height(size.width > 500 ? 40 : 10),
           Padding(
-            padding: EdgeInsets.all(size.width > 500 ? 30 : 20),
+            padding: EdgeInsets.all(size.width > 500 ? 30 : 0),
             child: NewsLetterWidget(),
           ),
           height(size.width > 500 ? 40 : 10),

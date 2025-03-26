@@ -1,4 +1,3 @@
-
 import 'package:ifyk_landing/ui/ui.dart';
 
 class WideFooter extends StatelessWidget {
@@ -32,11 +31,14 @@ class WideFooter extends StatelessWidget {
                         flex: 3,
                         child: Column(
                           children: [
-                            const Align(
-                              alignment: Alignment.centerLeft,
-                              child: PngAsset(
-                                'logo',
-                                width: 110,
+                            GestureDetector(
+                              onTap: () => tabsRouter.setActiveIndex(0),
+                              child: const Align(
+                                alignment: Alignment.centerLeft,
+                                child: PngAsset(
+                                  'logo',
+                                  width: 110,
+                                ),
                               ),
                             ),
                             height(30),
@@ -51,17 +53,19 @@ class WideFooter extends StatelessWidget {
                                     title: 'ABOUT',
                                   ),
                                   MenuTextWidget(
-                                    onTap: () => tabsRouter.setActiveIndex(2),
+                                    onTap: () => tabsRouter.setActiveIndex(3),
                                     title: 'CONTACT',
                                   ),
                                   MenuTextWidget(
-                                    onTap: () => tabsRouter.setActiveIndex(3),
+                                    onTap: () {
+                                      context.pushRoute(
+                                          const PrivacyPolicyRoute());
+                                    },
                                     title: 'PRIVACY POLICY',
                                   ),
                                   MenuTextWidget(
-                                    onTap: () {
-                                      tabsRouter.setActiveIndex(4);
-                                      launchUrl(Uri.parse(
+                                    onTap: () async {
+                                      await launchUrl(Uri.parse(
                                           'https://ifykevents.com/terms_condition'));
                                     },
                                     title: 'TERMS AND CONDITIONS',
@@ -111,10 +115,17 @@ class SocialButtonRowWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SocialButtonWidget(onTap: () {}, icon: FontAwesomeIcons.instagram),
-        SocialButtonWidget(onTap: () {}, icon: FontAwesomeIcons.twitter),
-        SocialButtonWidget(onTap: () {}, icon: FontAwesomeIcons.facebookF),
-        SocialButtonWidget(onTap: () {}, icon: FontAwesomeIcons.tiktok),
+        SocialButtonWidget(
+            onTap: () async {
+              await launchUrl(
+                  Uri.parse('https://www.instagram.com/ifykevents/'));
+            },
+            icon: FontAwesomeIcons.instagram),
+        SocialButtonWidget(
+            onTap: () async {
+              await launchUrl(Uri.parse('https://www.tiktok.com/@ifykevents'));
+            },
+            icon: FontAwesomeIcons.tiktok),
       ],
     );
   }

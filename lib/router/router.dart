@@ -14,10 +14,6 @@ class AppRouter extends $AppRouter {
                   path: '',
                   page: HomeRoute.page,
                 ),
-                AutoRoute(
-                  path: ':id',
-                  page: CityRoute.page,
-                )
               ]),
           AutoRoute(
             maintainState: false,
@@ -39,6 +35,9 @@ class AppRouter extends $AppRouter {
           path: '/privacy-policy',
           page: PrivacyPolicyRoute.page,
         ),
-        // RedirectRoute(path: '*', redirectTo: '/')
+        // AutoRoute(
+        //   path: '/blogs-details',
+        //   page: BlogsDetailsRoute.page,
+        // ),
       ];
 }

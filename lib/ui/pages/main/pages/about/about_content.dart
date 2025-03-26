@@ -38,6 +38,7 @@ class AboutContent extends StatelessWidget {
 
     final size = MediaQuery.of(context).size;
     return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
       child: Center(
         child: WideWrapper(
           maxWidth: maxWidth,

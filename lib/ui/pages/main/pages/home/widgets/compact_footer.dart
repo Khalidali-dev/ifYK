@@ -79,19 +79,17 @@ class CompactFooter extends StatelessWidget {
                 title: 'ABOUT',
               ),
               MenuTextWidget(
-                onTap: () => tabsRouter.setActiveIndex(2),
+                onTap: () => tabsRouter.setActiveIndex(3),
                 title: 'CONTACT',
               ),
               MenuTextWidget(
                 onTap: () {
-                  tabsRouter.setActiveIndex(3);
                   context.pushRoute(const PrivacyPolicyRoute());
                 },
                 title: 'PRIVACY POLICY',
               ),
               MenuTextWidget(
                 onTap: () {
-                  tabsRouter.setActiveIndex(4);
                   launchUrl(
                       Uri.parse('https://ifykevents.com/terms_condition'));
                 },

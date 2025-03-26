@@ -104,10 +104,8 @@ inspiration, learnings, and growth.
               onPressed: () async {
                 if (subscribeController.text.isNotEmpty) {
                   await ApiService()
-                      .subscribe(subscribeController.text.toString().trim())
-                      .then((value) => ScaffoldMessenger.of(context)
-                          .showSnackBar(const SnackBar(
-                              content: Text("You subscribed successfully"))));
+                      .subscribe(subscribeController.text.toString().trim(),context)
+                     ;
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text("Please enter your email")));

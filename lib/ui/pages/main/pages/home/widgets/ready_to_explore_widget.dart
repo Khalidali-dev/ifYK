@@ -1,4 +1,3 @@
-
 import 'package:ifyk_landing/ui/ui.dart';
 
 class ReadyToExploreWidget extends StatelessWidget {
@@ -11,27 +10,59 @@ class ReadyToExploreWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Container(
+      padding: const EdgeInsets.only(bottom: 170),
       decoration: const BoxDecoration(
-          image:
-              DecorationImage(image: AssetImage("assets/png/footer_glow.png"))),
+          color: Colors.transparent,
+          image: DecorationImage(
+              image: AssetImage("assets/png/footer_glow.png"),
+              fit: BoxFit.cover)),
       child: Column(
         children: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: screenWidth / 3.8),
-            child: AutoSizeText(
-              "READY TO EXPLORE?",
-              maxLines: 1,
-              minFontSize: 12,
-              textAlign: TextAlign.center,
-              style: GoogleFonts.unbounded(
-                fontWeight: FontWeight.bold,
-                fontSize: 40,
-                color: ColorPalette.primary,
-              ),
-            ),
+            child: size.width > 500
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      AutoSizeText(
+                        "READY TO",
+                        maxLines: 1,
+                        minFontSize: 12,
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.delaGothicOne(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 36,
+                          color: ColorPalette.primary,
+                        ),
+                      ),
+                      AutoSizeText(
+                        " EXPLORE?",
+                        maxLines: 1,
+                        minFontSize: 12,
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.delaGothicOne(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 36,
+                          color: ColorPalette.white,
+                        ),
+                      ),
+                    ],
+                  )
+                : AutoSizeText(
+                    "READY TO EXPLORE?",
+                    maxLines: 1,
+                    minFontSize: 12,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.delaGothicOne(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 24,
+                      color: ColorPalette.primary,
+                    ),
+                  ),
           ),
-          const SizedBox(height: 4),
+          height(10),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: screenWidth / 3.6),
             child: AutoSizeText(

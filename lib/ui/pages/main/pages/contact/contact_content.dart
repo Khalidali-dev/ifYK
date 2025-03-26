@@ -75,6 +75,7 @@ class _ContactContentState extends State<ContactContent> {
     final double leftPaddingWidth = reactivePadding < 30 ? 30 : reactivePadding;
     final size = MediaQuery.of(context).size;
     return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
       child: Column(
         children: [
           height(50),

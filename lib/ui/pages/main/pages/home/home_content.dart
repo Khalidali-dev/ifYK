@@ -130,7 +130,7 @@ class _HomeWideContentState extends State<HomeWideContent> {
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 20),
+                            height(20),
                             const PngAsset(
                               'main_images_compact',
                               fit: BoxFit.fitWidth,
@@ -139,7 +139,9 @@ class _HomeWideContentState extends State<HomeWideContent> {
                           ],
                         ),
                   NewsLetterWidget(),
-                  height(20),
+                  size.width > 500
+                      ? height(size.height * .15)
+                      : height(size.height * .1),
                   const CarouselSliderWidget(),
                   SizedBox(height: screenWidth / 20),
                   Padding(
@@ -184,6 +186,7 @@ class _HomeWideContentState extends State<HomeWideContent> {
                 ],
               ),
             ),
+            height(20),
             const WideFeedbacksSection(),
             size.width > 500
                 ? WideWrapper(

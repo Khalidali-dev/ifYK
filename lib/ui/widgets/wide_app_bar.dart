@@ -16,12 +16,21 @@ class WideAppBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SizedBox(
-            height: screenWidth / 50,
-            child: const Align(
-              alignment: Alignment.centerLeft,
-              child: PngAsset(
-                'logo',
+          GestureDetector(
+            onTap: () {
+              if (tabsRouter.activeIndex == 0) {
+                routerKeys[0].currentState?.controller?.popUntilRoot();
+              } else {
+                tabsRouter.setActiveIndex(0);
+              }
+            },
+            child: SizedBox(
+              height: screenWidth / 50,
+              child: const Align(
+                alignment: Alignment.centerLeft,
+                child: PngAsset(
+                  'logo',
+                ),
               ),
             ),
           ),

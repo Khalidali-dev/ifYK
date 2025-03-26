@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:ifyk_landing/models/blogs_model.dart';
+import 'package:ifyk_landing/ui/ui.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 const bool production = true;
@@ -46,7 +46,7 @@ class ApiService {
 
   String baseUrl = 'https://app.ifykevents.com/api/blogs';
 
-  Future<Response?> subscribe(String email) async {
+  Future<Response?> subscribe(String email, BuildContext context) async {
     try {
       Dio dio = Dio();
 
@@ -65,7 +65,16 @@ class ApiService {
       );
 
       print(email);
+      print('Subscription Success: ${response.statusCode}');
       print('Subscription Success: ${response.data}');
+      if (response.statusCode == 200) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(response.data["message"])));
+      } else {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(response.data["message"])));
+      }
+
       return response;
     } on DioException catch (e) {
       print('Subscription Error: ${e.message}');

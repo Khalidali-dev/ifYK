@@ -9,10 +9,12 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i9;
-import 'package:flutter/material.dart' as _i10;
+import 'package:flutter/foundation.dart' as _i10;
 import 'package:ifyk_landing/ui/pages/main/main_page.dart' as _i7;
 import 'package:ifyk_landing/ui/pages/main/pages/about/about_page.dart' as _i1;
-import 'package:ifyk_landing/ui/pages/main/pages/blogs/blogs_page.dart' as _i2;
+import 'package:ifyk_landing/ui/pages/main/pages/blogs/blogs_details.dart'
+    as _i2;
+import 'package:ifyk_landing/ui/pages/main/pages/blogs/blogs_page.dart' as _i3;
 import 'package:ifyk_landing/ui/pages/main/pages/contact/contact_page.dart'
     as _i4;
 import 'package:ifyk_landing/ui/pages/main/pages/home/home_page.dart' as _i5;
@@ -20,6 +22,7 @@ import 'package:ifyk_landing/ui/pages/main/pages/home/home_router_page.dart'
     as _i6;
 import 'package:ifyk_landing/ui/pages/privacy_policy/privacy_policy_page.dart'
     as _i8;
+import 'package:ifyk_landing/ui/ui.dart' as _i11;
 
 abstract class $AppRouter extends _i9.RootStackRouter {
   $AppRouter({super.navigatorKey});
@@ -32,10 +35,21 @@ abstract class $AppRouter extends _i9.RootStackRouter {
         child: const _i1.AboutPage(),
       );
     },
+    BlogsDetailsRoute.name: (routeData) {
+      final args = routeData.argsAs<BlogsDetailsRouteArgs>();
+      return _i9.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i2.BlogsDetailsPage(
+          key: args.key,
+          image: args.image,
+          desc: args.desc,
+        ),
+      );
+    },
     BlogsRoute.name: (routeData) {
       return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i2.BlogsPage(),
+        child: const _i3.BlogsPage(),
       );
     },
     ContactRoute.name: (routeData) {
@@ -91,7 +105,50 @@ class AboutRoute extends _i9.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i2.BlogsPage]
+/// [_i2.BlogsDetailsPage]
+class BlogsDetailsRoute extends _i9.PageRouteInfo<BlogsDetailsRouteArgs> {
+  BlogsDetailsRoute({
+    _i10.Key? key,
+    required String image,
+    required String desc,
+    List<_i9.PageRouteInfo>? children,
+  }) : super(
+          BlogsDetailsRoute.name,
+          args: BlogsDetailsRouteArgs(
+            key: key,
+            image: image,
+            desc: desc,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'BlogsDetailsRoute';
+
+  static const _i9.PageInfo<BlogsDetailsRouteArgs> page =
+      _i9.PageInfo<BlogsDetailsRouteArgs>(name);
+}
+
+class BlogsDetailsRouteArgs {
+  const BlogsDetailsRouteArgs({
+    this.key,
+    required this.image,
+    required this.desc,
+  });
+
+  final _i10.Key? key;
+
+  final String image;
+
+  final String desc;
+
+  @override
+  String toString() {
+    return 'BlogsDetailsRouteArgs{key: $key, image: $image, desc: $desc}';
+  }
+}
+
+/// generated route for
+/// [_i3.BlogsPage]
 class BlogsRoute extends _i9.PageRouteInfo<void> {
   const BlogsRoute({List<_i9.PageRouteInfo>? children})
       : super(
@@ -102,45 +159,6 @@ class BlogsRoute extends _i9.PageRouteInfo<void> {
   static const String name = 'BlogsRoute';
 
   static const _i9.PageInfo<void> page = _i9.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i3.CityPage]
-class CityRoute extends _i9.PageRouteInfo<CityRouteArgs> {
-  CityRoute({
-    _i10.Key? key,
-    required String cityId,
-    List<_i9.PageRouteInfo>? children,
-  }) : super(
-          CityRoute.name,
-          args: CityRouteArgs(
-            key: key,
-            cityId: cityId,
-          ),
-          rawPathParams: {'id': cityId},
-          initialChildren: children,
-        );
-
-  static const String name = 'CityRoute';
-
-  static const _i9.PageInfo<CityRouteArgs> page =
-      _i9.PageInfo<CityRouteArgs>(name);
-}
-
-class CityRouteArgs {
-  const CityRouteArgs({
-    this.key,
-    required this.cityId,
-  });
-
-  final _i10.Key? key;
-
-  final String cityId;
-
-  @override
-  String toString() {
-    return 'CityRouteArgs{key: $key, cityId: $cityId}';
-  }
 }
 
 /// generated route for
@@ -175,8 +193,8 @@ class HomeRoute extends _i9.PageRouteInfo<void> {
 /// [_i6.HomeRouterPage]
 class HomeRouterRoute extends _i9.PageRouteInfo<HomeRouterRouteArgs> {
   HomeRouterRoute({
-    _i10.Key? key,
-    _i10.GlobalKey<_i9.AutoRouterState>? routerKey,
+    _i11.Key? key,
+    _i11.GlobalKey<_i11.AutoRouterState>? routerKey,
     List<_i9.PageRouteInfo>? children,
   }) : super(
           HomeRouterRoute.name,
@@ -199,9 +217,9 @@ class HomeRouterRouteArgs {
     this.routerKey,
   });
 
-  final _i10.Key? key;
+  final _i11.Key? key;
 
-  final _i10.GlobalKey<_i9.AutoRouterState>? routerKey;
+  final _i11.GlobalKey<_i11.AutoRouterState>? routerKey;
 
   @override
   String toString() {
