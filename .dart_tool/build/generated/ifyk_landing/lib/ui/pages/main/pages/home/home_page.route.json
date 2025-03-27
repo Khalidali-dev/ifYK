@@ -1,0 +1,1 @@
+{"routes":[{"name":null,"pathParams":[],"pageType":{"import":"package:ifyk_landing/ui/pages/main/pages/home/home_page.dart","name":"HomePage","isNullable":false,"isRecordType":false},"className":"HomePage","parameters":[],"hasWrappedRoute":false,"hasConstConstructor":true,"deferredLoading":null}],"inputPath":"lib/ui/pages/main/pages/home/home_page.dart","inputHash":0}

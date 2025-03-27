@@ -143,6 +143,7 @@ class _HomeWideContentState extends State<HomeWideContent> {
                             ),
                           ],
                         ),
+                  size.width > 500 ? height(0) : height(50),
                   const SnapScrollEffectWidget(),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: screenWidth / 8),

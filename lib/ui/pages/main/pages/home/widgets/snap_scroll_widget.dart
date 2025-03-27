@@ -73,7 +73,7 @@ class _SnapScrollEffectWidgetState extends State<SnapScrollEffectWidget> {
               )
             : Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 55, vertical: 50),
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 40),
                 child: DeviceFrame(
                   device: Devices.ios.iPhone14Pro,
                   isFrameVisible: true,
