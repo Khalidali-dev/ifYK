@@ -5,15 +5,13 @@ part 'review.freezed.dart';
 part 'review.g.dart';
 
 @freezed
-class Review with _$Review {
-  const factory Review({
+abstract class ReviewModel with _$ReviewModel {
+  const factory ReviewModel({
     required int score,
     required String title,
     required String text,
-  }) = _Review;
+  }) = _ReviewModel;
 
-
-
-  factory Review.fromJson(Map<String, dynamic> json) =>
-      _$ReviewFromJson(json);
+  factory ReviewModel.fromJson(Map<String, dynamic> json) =>
+      _$ReviewModelFromJson(json);
 }

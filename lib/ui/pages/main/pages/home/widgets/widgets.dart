@@ -7,3 +7,4 @@ export 'vertical_heading_widget.dart';
 export 'wide_download_widget.dart';
 export 'wide_feedbacks_section.dart';
 export 'wide_footer.dart';
+export 'parallax_effect_widget.dart';

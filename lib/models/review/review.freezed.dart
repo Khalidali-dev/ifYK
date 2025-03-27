@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,136 +10,29 @@ part of 'review.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Review _$ReviewFromJson(Map<String, dynamic> json) {
-  return _Review.fromJson(json);
-}
-
 /// @nodoc
-mixin _$Review {
-  int get score => throw _privateConstructorUsedError;
-  String get title => throw _privateConstructorUsedError;
-  String get text => throw _privateConstructorUsedError;
+mixin _$ReviewModel implements DiagnosticableTreeMixin {
+  int get score;
+  String get title;
+  String get text;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $ReviewCopyWith<Review> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ReviewCopyWith<$Res> {
-  factory $ReviewCopyWith(Review value, $Res Function(Review) then) =
-      _$ReviewCopyWithImpl<$Res, Review>;
-  @useResult
-  $Res call({int score, String title, String text});
-}
-
-/// @nodoc
-class _$ReviewCopyWithImpl<$Res, $Val extends Review>
-    implements $ReviewCopyWith<$Res> {
-  _$ReviewCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of ReviewModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? score = null,
-    Object? title = null,
-    Object? text = null,
-  }) {
-    return _then(_value.copyWith(
-      score: null == score
-          ? _value.score
-          : score // ignore: cast_nullable_to_non_nullable
-              as int,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
+  $ReviewModelCopyWith<ReviewModel> get copyWith =>
+      _$ReviewModelCopyWithImpl<ReviewModel>(this as ReviewModel, _$identity);
 
-/// @nodoc
-abstract class _$$ReviewImplCopyWith<$Res> implements $ReviewCopyWith<$Res> {
-  factory _$$ReviewImplCopyWith(
-          _$ReviewImpl value, $Res Function(_$ReviewImpl) then) =
-      __$$ReviewImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int score, String title, String text});
-}
-
-/// @nodoc
-class __$$ReviewImplCopyWithImpl<$Res>
-    extends _$ReviewCopyWithImpl<$Res, _$ReviewImpl>
-    implements _$$ReviewImplCopyWith<$Res> {
-  __$$ReviewImplCopyWithImpl(
-      _$ReviewImpl _value, $Res Function(_$ReviewImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? score = null,
-    Object? title = null,
-    Object? text = null,
-  }) {
-    return _then(_$ReviewImpl(
-      score: null == score
-          ? _value.score
-          : score // ignore: cast_nullable_to_non_nullable
-              as int,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$ReviewImpl with DiagnosticableTreeMixin implements _Review {
-  const _$ReviewImpl(
-      {required this.score, required this.title, required this.text});
-
-  factory _$ReviewImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ReviewImplFromJson(json);
-
-  @override
-  final int score;
-  @override
-  final String title;
-  @override
-  final String text;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Review(score: $score, title: $title, text: $text)';
-  }
+  /// Serializes this ReviewModel to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'Review'))
+      ..add(DiagnosticsProperty('type', 'ReviewModel'))
       ..add(DiagnosticsProperty('score', score))
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('text', text));
@@ -148,46 +42,165 @@ class _$ReviewImpl with DiagnosticableTreeMixin implements _Review {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ReviewImpl &&
+            other is ReviewModel &&
             (identical(other.score, score) || other.score == score) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.text, text) || other.text == text));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, score, title, text);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ReviewImplCopyWith<_$ReviewImpl> get copyWith =>
-      __$$ReviewImplCopyWithImpl<_$ReviewImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ReviewImplToJson(
-      this,
-    );
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ReviewModel(score: $score, title: $title, text: $text)';
   }
 }
 
-abstract class _Review implements Review {
-  const factory _Review(
-      {required final int score,
-      required final String title,
-      required final String text}) = _$ReviewImpl;
-
-  factory _Review.fromJson(Map<String, dynamic> json) = _$ReviewImpl.fromJson;
-
-  @override
-  int get score;
-  @override
-  String get title;
-  @override
-  String get text;
-  @override
-  @JsonKey(ignore: true)
-  _$$ReviewImplCopyWith<_$ReviewImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+/// @nodoc
+abstract mixin class $ReviewModelCopyWith<$Res> {
+  factory $ReviewModelCopyWith(
+          ReviewModel value, $Res Function(ReviewModel) _then) =
+      _$ReviewModelCopyWithImpl;
+  @useResult
+  $Res call({int score, String title, String text});
 }
+
+/// @nodoc
+class _$ReviewModelCopyWithImpl<$Res> implements $ReviewModelCopyWith<$Res> {
+  _$ReviewModelCopyWithImpl(this._self, this._then);
+
+  final ReviewModel _self;
+  final $Res Function(ReviewModel) _then;
+
+  /// Create a copy of ReviewModel
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? score = null,
+    Object? title = null,
+    Object? text = null,
+  }) {
+    return _then(_self.copyWith(
+      score: null == score
+          ? _self.score
+          : score // ignore: cast_nullable_to_non_nullable
+              as int,
+      title: null == title
+          ? _self.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      text: null == text
+          ? _self.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _ReviewModel with DiagnosticableTreeMixin implements ReviewModel {
+  const _ReviewModel(
+      {required this.score, required this.title, required this.text});
+  factory _ReviewModel.fromJson(Map<String, dynamic> json) =>
+      _$ReviewModelFromJson(json);
+
+  @override
+  final int score;
+  @override
+  final String title;
+  @override
+  final String text;
+
+  /// Create a copy of ReviewModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ReviewModelCopyWith<_ReviewModel> get copyWith =>
+      __$ReviewModelCopyWithImpl<_ReviewModel>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ReviewModelToJson(
+      this,
+    );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    properties
+      ..add(DiagnosticsProperty('type', 'ReviewModel'))
+      ..add(DiagnosticsProperty('score', score))
+      ..add(DiagnosticsProperty('title', title))
+      ..add(DiagnosticsProperty('text', text));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ReviewModel &&
+            (identical(other.score, score) || other.score == score) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.text, text) || other.text == text));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, score, title, text);
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ReviewModel(score: $score, title: $title, text: $text)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$ReviewModelCopyWith<$Res>
+    implements $ReviewModelCopyWith<$Res> {
+  factory _$ReviewModelCopyWith(
+          _ReviewModel value, $Res Function(_ReviewModel) _then) =
+      __$ReviewModelCopyWithImpl;
+  @override
+  @useResult
+  $Res call({int score, String title, String text});
+}
+
+/// @nodoc
+class __$ReviewModelCopyWithImpl<$Res> implements _$ReviewModelCopyWith<$Res> {
+  __$ReviewModelCopyWithImpl(this._self, this._then);
+
+  final _ReviewModel _self;
+  final $Res Function(_ReviewModel) _then;
+
+  /// Create a copy of ReviewModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? score = null,
+    Object? title = null,
+    Object? text = null,
+  }) {
+    return _then(_ReviewModel(
+      score: null == score
+          ? _self.score
+          : score // ignore: cast_nullable_to_non_nullable
+              as int,
+      title: null == title
+          ? _self.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      text: null == text
+          ? _self.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+// dart format on

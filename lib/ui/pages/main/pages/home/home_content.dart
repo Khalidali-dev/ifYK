@@ -1,3 +1,4 @@
+import 'package:ifyk_landing/ui/pages/main/pages/home/widgets/snap_scroll_widget.dart';
 import 'package:ifyk_landing/ui/ui.dart';
 
 class HomeWideContent extends StatefulWidget {
@@ -9,6 +10,8 @@ class HomeWideContent extends StatefulWidget {
 }
 
 class _HomeWideContentState extends State<HomeWideContent> {
+  final ScrollController _scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     const double maxWidth = 1500;
@@ -17,6 +20,8 @@ class _HomeWideContentState extends State<HomeWideContent> {
         : maxWidth;
     final size = MediaQuery.of(context).size;
     return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
+      controller: _scrollController,
       child: Center(
         child: Column(
           children: [
@@ -138,12 +143,7 @@ class _HomeWideContentState extends State<HomeWideContent> {
                             ),
                           ],
                         ),
-                  NewsLetterWidget(),
-                  size.width > 500
-                      ? height(size.height * .15)
-                      : height(size.height * .1),
-                  const CarouselSliderWidget(),
-                  SizedBox(height: screenWidth / 20),
+                  const SnapScrollEffectWidget(),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: screenWidth / 8),
                     child: PngAsset(

@@ -150,7 +150,7 @@ class BlogsContent extends StatelessWidget {
         children: [
           Center(
             child: Text(
-              "Blog",
+              "Blogs",
               style: GoogleFonts.delaGothicOne(
                   color: Colors.white,
                   fontSize: size.width > 500 ? 40 : 32,
