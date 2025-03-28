@@ -56,24 +56,57 @@ class _SnapScrollEffectWidgetState extends State<SnapScrollEffectWidget> {
                 },
               ),
         size.width > 500
-            ? SizedBox(
-                height: size.height,
-                child: PageView.builder(
-                  controller: _pageController,
-                  scrollDirection: Axis.vertical,
-                  itemCount: 3,
-                  itemBuilder: (context, index) {
-                    return PngAsset(
-                      "smart_search${index + 1}",
-                      width: size.width,
-                      height: size.height,
-                    );
-                  },
+            ? Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 40),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(
+                      width: size.width * .5,
+                      height: size.height * .8,
+                      child: DeviceFrame(
+                        device: Devices.ios.iPhone14Pro,
+                        isFrameVisible: true,
+                        orientation: Orientation.portrait,
+                        screen: PageView.builder(
+                          controller: _pageController,
+                          scrollDirection: Axis.vertical,
+                          itemCount: 3,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: const EdgeInsets.only(bottom: 20),
+                              child: PngAsset(
+                                "smart_search_compact${index + 1}",
+                                width: size.width,
+                                height: size.height,
+                                fit: BoxFit.cover,
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                    ValueListenableBuilder<int>(
+                      valueListenable: _currentPage,
+                      builder: (context, value, child) {
+                        return VerticalHeadingWidget(
+                            title1: pageTitles[value],
+                            title2: pageTitles2[value],
+                            fontSize1: 24,
+                            fontSize2: 24,
+                            weight1: FontWeight.w400,
+                            weight2: FontWeight.w400,
+                            color1: ColorPalette.primary,
+                            color2: ColorPalette.white);
+                      },
+                    ),
+                  ],
                 ),
               )
             : Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 40, vertical: 40),
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 50),
                 child: DeviceFrame(
                   device: Devices.ios.iPhone14Pro,
                   isFrameVisible: true,

@@ -1,1 +1,0 @@
-{"routes":[{"name":null,"pathParams":[],"pageType":{"import":"package:ifyk_landing/ui/pages/main/pages/blogs/blogs_page.dart","name":"BlogsPage","isNullable":false,"isRecordType":false},"className":"BlogsPage","parameters":[],"hasWrappedRoute":false,"hasConstConstructor":true,"deferredLoading":null}],"inputPath":"lib/ui/pages/main/pages/blogs/blogs_page.dart","inputHash":0}

@@ -1,1 +1,0 @@
-{"routes":[{"name":null,"pathParams":[],"pageType":{"import":"package:ifyk_landing/ui/pages/main/pages/about/about_page.dart","name":"AboutPage","isNullable":false,"isRecordType":false},"className":"AboutPage","parameters":[],"hasWrappedRoute":false,"hasConstConstructor":true,"deferredLoading":null}],"inputPath":"lib/ui/pages/main/pages/about/about_page.dart","inputHash":0}

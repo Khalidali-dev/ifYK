@@ -228,7 +228,8 @@ class BlogsContent extends StatelessWidget {
                                       MaterialPageRoute(
                                         builder: (context) => BlogsDetailsPage(
                                           image: blog.image.toString(),
-                                          desc: blog.title.toString(),
+                                          id: blog.id.toString(),
+                                          title: blog.title.toString(),
                                         ),
                                       ),
                                     );

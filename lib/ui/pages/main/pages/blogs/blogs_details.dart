@@ -1,47 +1,12 @@
-import 'dart:html' as html;
-import 'dart:ui_web' as ui_web;
-
-import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:flutter/material.dart';
-import 'package:ifyk_landing/constants/utils.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:ifyk_landing/ui/ui.dart';
 
 class BlogsDetailsPage extends StatelessWidget {
-  const BlogsDetailsPage({super.key, required this.image, required this.desc});
-  final String image, desc;
+  BlogsDetailsPage(
+      {super.key, required this.image, required this.id, required this.title});
+  final String image, id, title;
 
-  Widget mailchimpImage(String imageUrl, String title, double height, Size size,
-      {double width = double.infinity}) {
-    if (kIsWeb) {
-      final viewId = 'mailchimp-image-${imageUrl.hashCode}';
-      ui_web.platformViewRegistry.registerViewFactory(
-        viewId,
-        (int viewId) {
-          final iframe = html.IFrameElement()
-            ..src = imageUrl
-            ..style.border = 'none'
-            ..style.width = '100%'
-            ..style.height = '100%';
-
-          return iframe;
-        },
-      );
-
-      return Padding(
-        padding: EdgeInsets.symmetric(
-            vertical: size.width > 500 ? size.height * .05 : size.height * .05,
-            horizontal: size.width > 500 ? size.width * .28 : 0),
-        child: Center(
-          child: SizedBox(
-            width: width,
-            height: height,
-            child: HtmlElementView(viewType: viewId),
-          ),
-        ),
-      );
-    } else {
-      return const SizedBox();
-    }
-  }
+  late InAppWebViewController webViewController;
 
   @override
   Widget build(BuildContext context) {
@@ -55,46 +20,43 @@ class BlogsDetailsPage extends StatelessWidget {
         foregroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: size.width > 500 ? 80 : 20),
-        physics: const BouncingScrollPhysics(),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              width: double.infinity,
-              height: size.width > 500 ? size.height * 0.4 : size.height * 0.3,
-              alignment: Alignment.center,
-              child: Container(
-                constraints: BoxConstraints(
-                  maxWidth: size.width,
-                ),
-                child: mailchimpImage(
-                    image,
-                    desc,
-                    size.width > 500 ? size.height * 0.4 : size.height * 0.3,
-                    size),
-              ),
-            ),
-            height(20),
+          padding: EdgeInsets.symmetric(
+              horizontal: size.width > 500 ? 80 : 20,
+              vertical: size.width > 500 ? 30 : 20),
+          physics: const BouncingScrollPhysics(),
+          child: FutureBuilder<String>(
+            future: ApiService().fetchHtmlData(id),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (snapshot.hasError) {
+                return const Center(
+                  child: Text("Something went wrong..."),
+                );
+              }
 
-            // Description
-            Padding(
-              padding:
-                  EdgeInsets.symmetric(horizontal: size.width > 500 ? 80 : 20),
-              child: Text(
-                desc,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white70,
-                  fontSize: size.width > 500 ? 18 : 14,
-                  fontWeight: FontWeight.w400,
+              return SizedBox(
+                width: double.infinity,
+                height: size.height,
+                child: InAppWebView(
+                  onWebViewCreated: (controller) async {
+                    webViewController = controller;
+                    await webViewController.loadData(
+                        data: snapshot.data!,
+                        mimeType: "text/html",
+                        encoding: "utf-8");
+                  },
+                  onPermissionRequest: (controller, request) async {
+                    return PermissionResponse(
+                        resources: request.resources,
+                        action: PermissionResponseAction.GRANT);
+                  },
                 ),
-              ),
-            ),
-            height(30),
-          ],
-        ),
-      ),
+              );
+            },
+          )),
     );
   }
 }

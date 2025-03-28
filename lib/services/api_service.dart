@@ -35,6 +35,7 @@ class ApiService {
 
   Future<Response> submitMessage(String name, String email, String message) {
     try {
+      print("Connect with US API hit");
       return _dio.post(
         '/contact-us',
         data: {'name': name, 'email': email, 'message': message},
@@ -44,15 +45,11 @@ class ApiService {
     }
   }
 
-  String baseUrl = 'https://app.ifykevents.com/api/blogs';
-
   Future<Response?> subscribe(String email, BuildContext context) async {
     try {
-      Dio dio = Dio();
+      String url = '/addContact';
 
-      String url = '$baseUrl/addContact';
-
-      var response = await dio.post(
+      var response = await _dio.post(
         url,
         options: Options(
           headers: {
@@ -92,13 +89,11 @@ class ApiService {
   }
 
   Future<BlogsModel?> getAllBlogs() async {
-    Dio dio = Dio();
-
-    String url = '$baseUrl/getBlogs';
+    String url = '/blogs/getBlogs';
 
     try {
-      final response = await dio.get(url);
-      print("ALL BLOGS ${response.data}");
+      final response = await _dio.get(url);
+
       if (response.statusCode == 200) {
         return BlogsModel.fromJson(response.data);
       } else {
@@ -108,6 +103,21 @@ class ApiService {
     } catch (e) {
       print("Error in blogs ${e.toString()}");
       return null;
+    }
+  }
+
+  Future<String> fetchHtmlData(String id) async {
+    try {
+      String url = '/blogs/getCampaignContent?campaignId=$id';
+      final response = await _dio.get(url);
+
+      if (response.statusCode == 200) {
+        return response.data['data'];
+      } else {
+        throw Exception('Failed to load data');
+      }
+    } catch (e) {
+      return "Error fetching data: $e";
     }
   }
 }
