@@ -6,6 +6,7 @@ class CompactFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tabsRouter = AutoTabsRouter.of(context);
+    final size = MediaQuery.of(context).size;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 30),
       alignment: Alignment.topCenter,
@@ -14,23 +15,53 @@ class CompactFooter extends StatelessWidget {
       child: Column(
         children: [
           height(40),
-          Text(
-            "READY TO EXPLORE?",
-            textAlign: TextAlign.center,
-            style: GoogleFonts.unbounded(
-              fontWeight: FontWeight.bold,
-              fontSize: 25,
-              color: ColorPalette.primary,
-            ),
-          ),
+          size.width > 500
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    AutoSizeText(
+                      "READY TO",
+                      maxLines: 1,
+                      minFontSize: 12,
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.delaGothicOne(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 37,
+                        color: ColorPalette.primary,
+                      ),
+                    ),
+                    AutoSizeText(
+                      " EXPLORE?",
+                      maxLines: 1,
+                      minFontSize: 12,
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.delaGothicOne(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 37,
+                        color: ColorPalette.white,
+                      ),
+                    ),
+                  ],
+                )
+              : AutoSizeText(
+                  "READY TO EXPLORE?",
+                  maxLines: 1,
+                  minFontSize: 12,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.delaGothicOne(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 24,
+                    color: ColorPalette.primary,
+                  ),
+                ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Text(
-              "See what’s happening near you. Download the app and start your adventure!",
+              "See what’s happening near you. Download the app\nand start your adventure!",
               textAlign: TextAlign.center,
               style: GoogleFonts.almarai(
                 fontWeight: FontWeight.normal,
-                fontSize: 16,
+                fontSize: 15,
                 color: ColorPalette.white,
               ),
             ),

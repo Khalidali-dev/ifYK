@@ -112,7 +112,10 @@ class _WideFeedbacksSectionState extends ConsumerState<WideFeedbacksSection> {
                   carouselController: _controller,
                   options: CarouselOptions(
                     viewportFraction: size.width > 500 ? 0.5 : 1,
-                    height: size.height * .27,
+                    height: size.width > 1200
+                        ? size.height * .25
+                        : size.height * .2,
+                    scrollPhysics: const BouncingScrollPhysics(),
                     initialPage: 0,
                     enableInfiniteScroll: true,
                     // autoPlay: true,
@@ -123,7 +126,7 @@ class _WideFeedbacksSectionState extends ConsumerState<WideFeedbacksSection> {
                         return Container(
                           width: MediaQuery.of(context).size.width,
                           margin: EdgeInsets.symmetric(
-                              horizontal: size.width > 500 ? 5 : 30),
+                              horizontal: size.width > 500 ? 10 : 30),
                           padding: const EdgeInsets.symmetric(
                               horizontal: 25, vertical: 25),
                           decoration: BoxDecoration(

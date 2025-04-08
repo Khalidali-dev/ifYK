@@ -88,6 +88,49 @@ class ApiService {
     }
   }
 
+  Future<Response?> phoneNumber(String number, BuildContext context) async {
+    try {
+      String url = '/user/sendSMS';
+
+      var response = await _dio.post(
+        url,
+        options: Options(
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        ),
+        data: {
+          'phoneNumber': number,
+        },
+      );
+
+      print(number);
+      print('Number  Success code: ${response.statusCode}');
+      print('Number Success: ${response.data}');
+      if (response.statusCode == 200) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(response.data["message"])));
+      } else {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(response.data["message"])));
+      }
+
+      return response;
+    } on DioException catch (e) {
+      print('Send Link Error: ${e.message}');
+      if (e.response != null) {
+        print('Status Code: ${e.response?.statusCode}');
+        print('Data: ${e.response?.data}');
+      } else {
+        print('Error sending request!');
+      }
+      return null;
+    } catch (e) {
+      print('Unexpected Error: $e');
+      return null;
+    }
+  }
+
   Future<BlogsModel?> getAllBlogs() async {
     String url = '/blogs/getBlogs';
 

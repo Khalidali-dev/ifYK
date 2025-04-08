@@ -34,25 +34,33 @@ class _HomeWideContentState extends State<HomeWideContent> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Expanded(
-                              child: Container(
-                                padding:
-                                    EdgeInsets.only(left: screenWidth / 20),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    SizedBox(height: screenWidth / 8),
-                                    const PngAsset('all_events_one_place'),
-                                    Padding(
-                                      padding: EdgeInsets.only(
-                                        left: screenWidth / 30,
-                                      ),
-                                      child: const WideDownloadWidget(
-                                          isHeader: true),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.only(left: screenWidth / 20),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        SizedBox(height: screenWidth / 8),
+                                        const PngAsset('all_events_one_place'),
+                                      ],
                                     ),
-                                    SizedBox(height: screenWidth / 15)
-                                  ],
-                                ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                      left: screenWidth / 25,
+                                    ),
+                                    child: WideDownloadWidget(
+                                      isHeader: true,
+                                      image: "qrcodeemoji",
+                                    ),
+                                  ),
+                                  SizedBox(height: screenWidth / 15)
+                                ],
                               ),
                             ),
                             const SizedBox(width: 50),
@@ -143,11 +151,13 @@ class _HomeWideContentState extends State<HomeWideContent> {
                             ),
                           ],
                         ),
-                  size.width > 500 ? height(0) : height(50),
+                  NewsLetterWidget(),
+                  size.width > 500 ? height(50) : height(70),
                   const SnapScrollEffectWidget(),
-                  size.width > 500 ? height(50) : height(0),
+                  size.width > 500 ? height(50) : height(10),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: screenWidth / 8),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: size.width > 500 ? screenWidth / 8 : 0),
                     child: PngAsset(
                       size.width > 500
                           ? 'going_out_made_easy'
@@ -190,7 +200,7 @@ class _HomeWideContentState extends State<HomeWideContent> {
             ),
             height(20),
             const WideFeedbacksSection(),
-            size.width > 500
+            size.width >= 1200
                 ? WideWrapper(
                     maxWidth: 1200,
                     child: WideFooter(),

@@ -13,12 +13,8 @@ class BlogsContent extends StatelessWidget {
     required this.tabsRouter,
   });
 
-  Widget headerImage(
-    String imageUrl,
-    String title,
-    Size size, {
-    double height = 300,
-  }) {
+  Widget headerImage(String imageUrl, String title, Size size,
+      {double height = 300, VoidCallback? onTap}) {
     if (kIsWeb) {
       final viewId = 'mailchimp-image-${imageUrl.hashCode}';
 
@@ -40,6 +36,11 @@ class BlogsContent extends StatelessWidget {
             ..style.pointerEvents = 'none';
 
           container.append(imgElement);
+          container.onClick.listen((_) {
+            if (onTap != null) {
+              onTap();
+            }
+          });
 
           return container;
         },
@@ -162,7 +163,11 @@ class BlogsContent extends StatelessWidget {
             padding: EdgeInsets.all(size.width > 500 ? 30 : 20),
             child: SizedBox(
               width: size.width,
-              height: size.width > 500 ? size.height * .93 : size.height * .52,
+              height: size.width > 1200
+                  ? size.height * .93
+                  : size.width > 500 && size.width < 1100
+                      ? size.height * .486
+                      : size.height * .52,
               child: FutureBuilder<BlogsModel?>(
                   future: ApiService().getAllBlogs(),
                   builder: (context, snapshot) {
@@ -186,21 +191,35 @@ class BlogsContent extends StatelessWidget {
                           padding: EdgeInsets.all(size.width > 500 ? 30 : 0),
                           child: SizedBox(
                               width: size.width,
-                              height: size.width > 500
+                              height: size.width > 1200
                                   ? size.height * .5
                                   : size.height * .22,
                               child: headerImage(
                                 item!.image.toString(),
                                 item.title.toString(),
                                 size,
-                                height: size.width > 500
+                                height: size.width > 1200
                                     ? size.height * .5
                                     : size.height * .22,
+                                onTap: () {
+                                  if (context.mounted) {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => BlogsDetailsPage(
+                                          image: item.image.toString(),
+                                          id: item.id.toString(),
+                                          title: item.title.toString(),
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                },
                               )),
                         ),
                         height(size.width > 500 ? 30 : 50),
                         SizedBox(
-                          height: size.width > 500
+                          height: size.width > 1200
                               ? size.height * .3
                               : size.height * .2,
                           child: ListView.separated(
@@ -215,10 +234,12 @@ class BlogsContent extends StatelessWidget {
                                 blog.image.toString(),
                                 blog.title.toString(),
                                 size,
-                                width: size.width > 500
+                                width: size.width > 1200
                                     ? size.width * .25
-                                    : size.width,
-                                height: size.width > 500
+                                    : size.width > 500 && size.width < 1100
+                                        ? size.width * .45
+                                        : size.width,
+                                height: size.width > 1200
                                     ? size.height * .3
                                     : size.height * .26,
                                 onTap: () {

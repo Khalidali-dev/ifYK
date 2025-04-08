@@ -1,11 +1,12 @@
 import 'package:ifyk_landing/ui/ui.dart';
 
 @RoutePage()
-class PrivacyPolicyPage extends StatelessWidget {
+class PrivacyPolicyPage extends ConsumerWidget {
   const PrivacyPolicyPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    // ignore: deprecated_member_use
     return PopScope(
       canPop: false,
       child: Scaffold(
@@ -49,6 +50,25 @@ class PrivacyPolicyPage extends StatelessWidget {
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
+                          // Row(
+                          //   crossAxisAlignment: CrossAxisAlignment.start,
+                          //   children: [
+                          //     const CustomBackButton(),
+                          //     const Expanded(
+                          //       child: Center(
+                          //         child: CustomText(
+                          //           label: '614 N Dupont Hwy Ste 210 Dover, DE 19901 Privacy Policy',
+                          //           maxLines: 3,
+                          //           fontWeight: FontWeight.bold,
+                          //           align: TextAlign.center,
+                          //           fontSize: 20,
+                          //           textColor: Colors.white,
+                          //         ),
+                          //       ),
+                          //     ),
+                          //     SizedBox(width: kIsWeb ? !context.router.canPop() ? 170 : 100 : 60)
+                          //   ],
+                          // ),
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 25),
                             child: Column(
@@ -168,7 +188,7 @@ class PrivacyPolicyPage extends StatelessWidget {
                                 CustomText(
                                   label:
                                       'Before sending any promotional messages, we will obtain consent from customers explicitly through a double opt-in mechanism. First, customers will fill out a consent form on our business site, indicating their willingness to receive promotional messages. After this initial opt-in, they will confirm their consent by replying "YES" or a similar confirmation on their mobile device. By completing the double opt-in process, you acknowledge and agree to receive promotional updates, offers, or other related communications. We prioritize compliance with all applicable regulations to ensure your experience is secure and user-friendly.',
-                                  maxLines: 3,
+                                  maxLines: 15,
                                   align: TextAlign.start,
                                   fontSize: 14,
                                   textColor: Colors.white,
@@ -185,7 +205,7 @@ class PrivacyPolicyPage extends StatelessWidget {
                                 CustomText(
                                   label:
                                       'We only collect data that helps us achieve the purpose set out in this Privacy Policy. We will not collect any additional data beyond the data listed below without notifying you first.',
-                                  maxLines: 3,
+                                  maxLines: 4,
                                   align: TextAlign.start,
                                   fontSize: 14,
                                   textColor: Colors.white,
@@ -247,7 +267,7 @@ class PrivacyPolicyPage extends StatelessWidget {
                                 CustomText(
                                   label:
                                       'Data collected on our Site will only be used for the purposes specified in this Privacy Policy or indicated on the relevant pages of our Site. We will not use your data beyond what we disclose in this Privacy Policy.',
-                                  maxLines: 3,
+                                  maxLines: 5,
                                   align: TextAlign.start,
                                   fontSize: 14,
                                   textColor: Colors.white,
@@ -401,7 +421,14 @@ class PrivacyPolicyPage extends StatelessWidget {
                                 ),
                                 SizedBox(height: 30),
                                 CustomText(
-                                  label: '1. Philippines\n2. Pakistan',
+                                  label: '1. Philippines',
+                                  maxLines: 20,
+                                  align: TextAlign.start,
+                                  fontSize: 14,
+                                  textColor: Colors.white,
+                                ),
+                                CustomText(
+                                  label: '2. Pakistan',
                                   maxLines: 20,
                                   align: TextAlign.start,
                                   fontSize: 14,
@@ -439,6 +466,7 @@ class PrivacyPolicyPage extends StatelessWidget {
                                       'How to Access, Modify, Delete, or Challenge the Data Collected',
                                   align: TextAlign.start,
                                   fontWeight: FontWeight.bold,
+                                  maxLines: 2,
                                   fontSize: 15,
                                   underlined: true,
                                   textColor: Colors.white,
@@ -451,16 +479,9 @@ class PrivacyPolicyPage extends StatelessWidget {
                                   fontSize: 14,
                                   textColor: Colors.white,
                                 ),
-                                SizedBox(height: 30),
+                                SizedBox(height: 20),
                                 CustomText(
-                                  label: 'Ghulam Muhammad Qureshi',
-                                  maxLines: 20,
-                                  align: TextAlign.start,
-                                  fontSize: 14,
-                                  textColor: Colors.white,
-                                ),
-                                CustomText(
-                                  label: 'g.qureshi@protogroup.co',
+                                  label: 'ryderneave@outlook.com',
                                   maxLines: 20,
                                   align: TextAlign.start,
                                   fontSize: 14,
@@ -491,6 +512,7 @@ class PrivacyPolicyPage extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                   fontSize: 15,
                                   underlined: true,
+                                  maxLines: 2,
                                   textColor: Colors.white,
                                 ),
                                 CustomText(
@@ -513,7 +535,7 @@ class PrivacyPolicyPage extends StatelessWidget {
                                 SizedBox(height: 30),
                                 CustomText(
                                   label:
-                                      '2. Text Messaging. Users may receive text message notifications about their activities on our Site. To opt out of these messages: Reply "STOP" to any text message received from us. Update your preferences in your account settings by selecting "Opt-Out of Text Messages. "Contact our support team at support@ifykevents.com or (845) 905-9003 to request text message opt-out.',
+                                      '2. Text Messaging. Users may receive text message notifications about their activities on our Site. To opt out of these messages: Reply "STOP" to any text message received from us. Update your preferences in your account settings by selecting "Opt-Out of Text Messages." Contact our support team at support@ifykevents.com or (845) 905-9003 to request text message opt-out. ​',
                                   maxLines: 20,
                                   align: TextAlign.start,
                                   fontSize: 14,
@@ -547,21 +569,28 @@ class PrivacyPolicyPage extends StatelessWidget {
                                 ),
                                 CustomText(
                                   label:
-                                      'If you have any questions, concerns or complaints, you can contact our privacy officer, Ghulam Muhammad Qureshi, at:',
+                                      'If you have any questions, concerns or complaints, you can contact our privacy officer at:',
                                   maxLines: 20,
                                   align: TextAlign.start,
                                   fontSize: 14,
                                   textColor: Colors.white,
                                 ),
-                                SizedBox(height: 30),
+
                                 CustomText(
-                                  label: 'g.qureshi@protogroup.co',
+                                  label: 'ryderneave@outlook.com',
                                   maxLines: 20,
                                   align: TextAlign.start,
                                   fontSize: 14,
                                   textColor: Colors.white,
                                 ),
                                 SizedBox(height: 50),
+                                // CustomText(
+                                //   label: '©2002-2024 LawDepot.com®',
+                                //   maxLines: 10,
+                                //   align: TextAlign.start,
+                                //   fontSize: 9,
+                                //     textColor: Colors.white,
+                                // ),
                               ],
                             ),
                           ),

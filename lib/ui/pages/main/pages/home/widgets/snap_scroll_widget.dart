@@ -62,9 +62,25 @@ class _SnapScrollEffectWidgetState extends State<SnapScrollEffectWidget> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    size.width > 500 && size.width < 1100
+                        ? ValueListenableBuilder<int>(
+                            valueListenable: _currentPage,
+                            builder: (context, value, child) {
+                              return VerticalHeadingWidget(
+                                  title1: pageTitles[value],
+                                  title2: pageTitles2[value],
+                                  fontSize1: 24,
+                                  fontSize2: 24,
+                                  weight1: FontWeight.w400,
+                                  weight2: FontWeight.w400,
+                                  color1: ColorPalette.primary,
+                                  color2: ColorPalette.white);
+                            },
+                          )
+                        : const SizedBox(),
                     SizedBox(
                       width: size.width * .5,
-                      height: size.height * .8,
+                      height: size.height * .7,
                       child: DeviceFrame(
                         device: Devices.ios.iPhone14Pro,
                         isFrameVisible: true,
@@ -87,20 +103,22 @@ class _SnapScrollEffectWidgetState extends State<SnapScrollEffectWidget> {
                         ),
                       ),
                     ),
-                    ValueListenableBuilder<int>(
-                      valueListenable: _currentPage,
-                      builder: (context, value, child) {
-                        return VerticalHeadingWidget(
-                            title1: pageTitles[value],
-                            title2: pageTitles2[value],
-                            fontSize1: 24,
-                            fontSize2: 24,
-                            weight1: FontWeight.w400,
-                            weight2: FontWeight.w400,
-                            color1: ColorPalette.primary,
-                            color2: ColorPalette.white);
-                      },
-                    ),
+                    size.width > 1200
+                        ? ValueListenableBuilder<int>(
+                            valueListenable: _currentPage,
+                            builder: (context, value, child) {
+                              return VerticalHeadingWidget(
+                                  title1: pageTitles[value],
+                                  title2: pageTitles2[value],
+                                  fontSize1: 24,
+                                  fontSize2: 24,
+                                  weight1: FontWeight.w400,
+                                  weight2: FontWeight.w400,
+                                  color1: ColorPalette.primary,
+                                  color2: ColorPalette.white);
+                            },
+                          )
+                        : const SizedBox(),
                   ],
                 ),
               )
